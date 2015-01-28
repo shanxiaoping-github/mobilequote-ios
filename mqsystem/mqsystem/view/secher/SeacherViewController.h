@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SeacherViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

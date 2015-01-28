@@ -9,16 +9,23 @@
 #import "SeacherViewController.h"
 #import "ViewUtil.h"
 
-@interface SeacherViewController ()
+@interface SeacherViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>{
+    NSMutableArray *projectDatas;
+}
 
 @end
 
 @implementation SeacherViewController
-
+@synthesize tableView=_tableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _tableView.separatorStyle = NO;
+    self.automaticallyAdjustsScrollViewInsets=NO;
     UIBarButtonItem *backButton = [ViewUtil genTopLeftButtonItemWithImage:@"com_icon_return_img" target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem=backButton;
+   
+    projectDatas = [NSMutableArray new];
     // Do any additional setup after loading the view.
 }
 
@@ -43,5 +50,16 @@
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden=NO;
 }
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return UITableViewAutomaticDimension;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+   return  [projectDatas count];
+}
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    NSLog(@"djkaljdlasd");
+}
 @end

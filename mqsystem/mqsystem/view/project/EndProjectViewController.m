@@ -11,6 +11,7 @@
 #import "ProjectData.h"
 #import "ProjectCell.h"
 #import "StoryContants.h"
+#import "ProjectTableViewCell.h"
 @interface EndProjectViewController ()<UITableViewDataSource,UITableViewDelegate>{
   NSMutableArray *projectDatas;
 }
@@ -90,14 +91,16 @@
     return [projectDatas count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    ProjectCell *projectCell = (ProjectCell*)cell;
+   // UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"cell"];
+   // ProjectCell *projectCell = (ProjectCell*)cell;
+    NSArray* nibView =[[NSBundle mainBundle] loadNibNamed:@"ProjectTableViewCell" owner:nil options:nil];
+    ProjectTableViewCell*  projectCell = [nibView objectAtIndex:0];
     ProjectData *data = [projectDatas objectAtIndex:indexPath.row];
     projectCell.title.text = data.title;
     projectCell.endTime.text = data.endTime;
     projectCell.projectNumber.text = data.serialNumber;
     projectCell.moneyType.text=data.moneType;
-    return  cell;
+    return  projectCell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ProjectData *data = [projectDatas objectAtIndex:indexPath.row];

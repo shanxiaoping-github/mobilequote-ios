@@ -8,7 +8,7 @@
 
 #import "AskPriceProjectViewController.h"
 #import "ViewUtil.h"
-#import "ProjectCell.h"
+
 #import "ProjectData.h"
 #import "StoryContants.h"
 #import "ProjectTableViewCell.h"
@@ -94,7 +94,7 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSArray* nibView =[[NSBundle mainBundle] loadNibNamed:@" ProjectTableViewCell" owner:nil options:nil];
+    NSArray* nibView =[[NSBundle mainBundle] loadNibNamed:@"ProjectTableViewCell" owner:nil options:nil];
     ProjectTableViewCell*  projectCell = [nibView objectAtIndex:0];
    
    // UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"cell"];
