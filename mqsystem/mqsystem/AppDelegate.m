@@ -9,12 +9,15 @@
 #import "AppDelegate.h"
 #import "StoryContants.h"
 #import "StoryMacros.h"
+#import "JSONKit.h"
 AppDelegate *instance=nil;
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+ 
+
     instance = self;
     [self initWindow];
     [AppDelegate startStory:story_login];

@@ -41,7 +41,8 @@
 		5CAB586A1A767D1700642B6E /* MathUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB58691A767D1700642B6E /* MathUtil.m */; };
 		5CAB586E1A76878200642B6E /* ProjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB586C1A76878200642B6E /* ProjectTableViewCell.m */; };
 		5CAB586F1A76878200642B6E /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAB586D1A76878200642B6E /* ProjectTableViewCell.xib */; };
-		5CAB58871A792A9700642B6E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB58861A792A9700642B6E /* JSONKit.m */; };
+		5CAB58871A792A9700642B6E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB58861A792A9700642B6E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CAB58941A792DE500642B6E /* JsonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB58921A792DE500642B6E /* JsonFactory.m */; };
 		5CC5ADCF1A46CD6600DF4156 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5ADCE1A46CD6600DF4156 /* main.m */; };
 		5CC5ADD21A46CD6600DF4156 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5ADD11A46CD6600DF4156 /* AppDelegate.m */; };
 		5CC5ADDA1A46CD6600DF4156 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CC5ADD91A46CD6600DF4156 /* Images.xcassets */; };
@@ -109,6 +110,8 @@
 		5CAB586D1A76878200642B6E /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
 		5CAB58851A792A9700642B6E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		5CAB58861A792A9700642B6E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		5CAB58921A792DE500642B6E /* JsonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonFactory.m; sourceTree = "<group>"; };
+		5CAB58931A792DE500642B6E /* JsonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonFactory.h; sourceTree = "<group>"; };
 		5CC5ADC91A46CD6600DF4156 /* mqsystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mqsystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC5ADCD1A46CD6600DF4156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CC5ADCE1A46CD6600DF4156 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 		5C463EF91A46FBEE00015AF3 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				5CAB58921A792DE500642B6E /* JsonFactory.m */,
+				5CAB58931A792DE500642B6E /* JsonFactory.h */,
 				5C463EFA1A46FC4E00015AF3 /* StoryMacros.h */,
 				5C64DD4B1A4E726B00A3E304 /* StringUtil.h */,
 				5C64DD4C1A4E726B00A3E304 /* StringUtil.m */,
@@ -515,6 +520,7 @@
 				5C0A666E1A750CA400088494 /* ProductTableViewCell.m in Sources */,
 				5CC5ADD21A46CD6600DF4156 /* AppDelegate.m in Sources */,
 				5C64DD711A4EAB3600A3E304 /* LoginViewController.m in Sources */,
+				5CAB58941A792DE500642B6E /* JsonFactory.m in Sources */,
 				5CC5ADCF1A46CD6600DF4156 /* main.m in Sources */,
 				5C64DD511A4E749A00A3E304 /* ShowUtil.m in Sources */,
 				5C64DD751A4EAE5400A3E304 /* HomeViewController.m in Sources */,
