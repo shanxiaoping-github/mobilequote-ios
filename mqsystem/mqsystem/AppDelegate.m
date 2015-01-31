@@ -10,11 +10,14 @@
 #import "StoryContants.h"
 #import "StoryMacros.h"
 #import "JSONKit.h"
+#import "StringUtil.h"
 AppDelegate *instance=nil;
+NSMutableDictionary *applacationContext=nil;
 
-@implementation AppDelegate
 
-
+@implementation AppDelegate{
+    NSMutableDictionary *applacationContext;
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
  
 
@@ -76,5 +79,38 @@ AppDelegate *instance=nil;
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
 }
++(AppDelegate*)shareIntance{
+    return instance;
+}
++(void)addAppContext:(id)object{
+    [AppDelegate addAppContext:object forkey:[StringUtil getObjectClassName:object]];
+}
++(void)addAppContext:(id)object forkey:(NSString *)key{
+    
+    if (!applacationContext) {
+        applacationContext = [NSMutableDictionary dictionary];
+        
+        
+    }
+    [applacationContext setObject:object forKey:key];
+}
++(id)getAppContext:(NSString *)key{
+    if (!applacationContext) {
+        return nil;
+    }
+    return [applacationContext objectForKey:key];
+}
 
+- (void)exitApplication {
+    UIWindow *window = self.window;
+    
+    [UIView animateWithDuration:1.0f animations:^{
+        window.alpha = 0;
+        window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+    } completion:^(BOOL finished) {
+        exit(0);
+    }];
+    //exit(0);
+    
+}
 @end

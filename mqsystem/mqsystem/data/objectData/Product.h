@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Product : NSObject
+#import "JsonFactory.h"
+@interface Product : NSObject<JsonData>
 @property(nonatomic,strong)NSNumber* number;
 @property(nonatomic,strong)NSString* serialNumber;
 @property(nonatomic,strong)NSString* productName;

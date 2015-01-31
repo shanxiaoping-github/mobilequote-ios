@@ -19,5 +19,7 @@
  *判断字符串为非空
  */
 +(BOOL)isNoteEmpty:(NSString*)str;
+/*获得对象类名*/
++(NSString*)getObjectClassName:(id)obj;
 
 @end

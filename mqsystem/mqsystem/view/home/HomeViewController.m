@@ -8,7 +8,9 @@
 
 #import "HomeViewController.h"
 #import "StoryContants.h"
-
+#import "UserInfo.h"
+#import "AppDelegate.h"
+#import "StringUtil.h"
 @interface HomeViewController ()
 
 @end
@@ -24,8 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.navigationController.navigationBarHidden=YES;
     
+   
+    UserInfo *userInfo = [AppDelegate getAppContext:@"UserInfo"];
     
     /*询比价手势*/
     UITapGestureRecognizer* recognizer0= [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(openAskPriceProject)];
@@ -41,6 +44,7 @@
     
     /*个人信息*/
     UITapGestureRecognizer* recognizer2= [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(openMyself)];
+    _myselfInformationLable.text = userInfo.realName;
     _myselfInformationLable.userInteractionEnabled=YES;
     [_myselfInformationLable addGestureRecognizer:recognizer2];
     

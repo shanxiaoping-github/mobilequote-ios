@@ -13,16 +13,19 @@
 
 
 
-+(void)showAlert:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTtile:(NSString *)cancleStr otherButtonTitles:(NSString *)otherStr{
++(UIAlertView*)showAlert:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTtile:(NSString *)cancleStr otherButtonTitles:(NSString *)otherStr{
     
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:delegate cancelButtonTitle:cancleStr otherButtonTitles:otherStr, nil];
     
     [alertView show];
-    
+    return alertView;
     
 }
-+(void)showAlert:(NSString *)title message:(NSString *)message{
-    [ShowUtil showAlert:title message:message delegate:nil cancelButtonTtile:@"确定" otherButtonTitles:nil];
++(UIAlertView*)showAlert:(NSString *)title message:(NSString *)message{
+    return [ShowUtil showAlert:title message:message delegate:nil cancelButtonTtile:@"确定" otherButtonTitles:nil];
+}
++(UIAlertView *)showAlert:(NSString *)message{
+return [ShowUtil showAlert:nil message:message delegate:nil cancelButtonTtile:nil otherButtonTitles:nil];
 }
 @end
 

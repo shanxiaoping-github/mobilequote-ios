@@ -20,4 +20,18 @@
 @synthesize rule=_rule;
 @synthesize lastRank=_lastRank;
 @synthesize currentRank=_currentRank;
+-(void)parse:(NSDictionary *)object{
+    
+    self.serialNumber = [object objectForKey:@"serialNumber"];
+    self.productName = [object objectForKey:@"name"];
+    self.number = [object objectForKey:@"number"];
+    self.unit = [object objectForKey:@"unit"];
+    self.currentPrice = [object objectForKey:@"currentPrice"];
+    self.lastPrice = [object objectForKey:@"lastPrice"];
+    self.rate = [object objectForKey:@"rate"];
+    self.describe = [object objectForKey:@"describe"];
+    self.rule = [object objectForKey:@"specifications"];
+    self.lastRank = [object objectForKey:@"lastRank"];
+    self.currentRank = [object objectForKey:@"currentRank"];
+}
 @end

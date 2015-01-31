@@ -17,6 +17,12 @@
 +(void)startStory:(NSString*)storyName;
 
 +(void)startStory:(NSString*)storyName:(NSString*)controllerName;
-
+/*获取实例*/
++(AppDelegate*)shareIntance;
+/*添加上下文对象*/
++(void)addAppContext:(id)object;
++(void)addAppContext:(id)object forkey:(NSString*) key;
++(id)getAppContext:(NSString*)key;
+-(void)exitApplication;
 @end
 

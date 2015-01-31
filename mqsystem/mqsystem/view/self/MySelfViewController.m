@@ -8,17 +8,26 @@
 
 #import "MySelfViewController.h"
 #import "ViewUtil.h"
+#import "UserInfo.h"
+#import "AppDelegate.h"
+#import "ShowUtil.h"
 
-@interface MySelfViewController ()
+@interface MySelfViewController ()<UIAlertViewDelegate>
+@property (strong, nonatomic) IBOutlet UILabel *realName;
 
 @end
 
 @implementation MySelfViewController
+@synthesize realName=_realName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIBarButtonItem *backButton = [ViewUtil genTopLeftButtonItemWithImage:@"com_icon_return_img" target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem=backButton;
+    
+    UserInfo *userInfo =[AppDelegate getAppContext:@"UserInfo"];
+    _realName.text = userInfo.realName;
+    
 
     // Do any additional setup after loading the view.
 }
@@ -46,5 +55,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden=NO;
 }
-
+/*退出软件*/
+- (IBAction)outApp:(id)sender {
+    [ShowUtil showAlert:@"退出软件" message:@"确定要退出软件" delegate:self cancelButtonTtile:@"取消"otherButtonTitles:@"确定"];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+        [[AppDelegate shareIntance] exitApplication];
+    }
+}
 @end

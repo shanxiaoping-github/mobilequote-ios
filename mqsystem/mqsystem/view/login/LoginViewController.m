@@ -10,8 +10,17 @@
 #import "StringUtil.h"
 #import "ShowUtil.h"
 #import "StoryContants.h"
+#import "HttpAddress.h"
+#import "HttpEvent.h"
+#import "HttpClientManager.h"
+#import "JsonFactory.h"
+#import "ResponseCode.h"
+#import "ShowUtil.h"
+#import <UIKit/UIKit.h>
+#import "UserInfo.h"
+#import "AppDelegate.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<HttpCallBack>
 
 @end
 
@@ -54,8 +63,51 @@
         [ShowUtil showAlert:@"输入提示" message:@"请输入密码"];
         return;
     }
-    [self performSegueWithIdentifier:story_home_step sender:nil];
+    
+     //登录
+    HttpEvent *loginEvent =[HttpEvent new];
+    loginEvent.actionUrl=login;
+    [loginEvent addPrama:userNameStr key:@"userName"];
+    [loginEvent addPrama:passWordStr key:@"passWord"];
+    loginEvent.callBack=self;
+    HttpClientManager* httpClient = [HttpClientManager sharedClient];
+    httpClient.event = loginEvent;
+    [httpClient submitHttpEvent];
+    
     
     
 }
+-(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
+    
+    NSDictionary* result=[JsonFactory creatJsonDataItem:operation.responseString];
+    NSNumber *status=[result objectForKey:@"status"];
+    int statusValue = [status intValue];
+    //UIAlertView* alertView=nil;
+    
+    
+    if (statusValue == login_success) {
+        NSDictionary* userItem = [result objectForKey:@"userInfo"];
+        UserInfo* userInfo=[JsonFactory creatJsonDataItem:userItem class:[UserInfo class]];
+        [AppDelegate addAppContext:userInfo];
+        [self performSegueWithIdentifier:story_home_step sender:nil];
+        
+       // alertView = [ShowUtil showAlert:@"登录成功"];
+    }else if(statusValue == login_did){
+        //alertView = [ShowUtil showAlert:@"已登录"];
+        
+    }else if(statusValue ==login_faile){
+       // alertView = [ShowUtil showAlert:@"登录失败"];
+        
+    }
+    
+//    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(dismissAler:) userInfo:alertView repeats:NO];
+    
+ //   [self performSegueWithIdentifier:story_home_step sender:nil];
+}
+-(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
+}
+//-(void)dismissAler:(UIAlertView*)alerView{
+//    [alerView dismissWithClickedButtonIndex:nil animated:NO];
+//    //alerView=nil;
+//}
 @end

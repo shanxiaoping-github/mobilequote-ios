@@ -26,5 +26,8 @@
     }
     return true;
 }
-
++(NSString *)getObjectClassName:(id)obj{
+    
+   return [NSString stringWithUTF8String:object_getClassName(obj)];
+}
 @end

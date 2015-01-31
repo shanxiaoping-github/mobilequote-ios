@@ -16,7 +16,7 @@
 /*
  *显示提示框
  */
-+(void)showAlert:(NSString*)title
++(UIAlertView*)showAlert:(NSString*)title
          message:(NSString*)message
          delegate:(id)delegate
          cancelButtonTtile:(NSString*)cancleStr
@@ -24,6 +24,6 @@
 /*
  *显示显示框
  */
-+(void)showAlert:(NSString*)title message:(NSString*)message;
-
++(UIAlertView*)showAlert:(NSString*)title message:(NSString*)message;
++(UIAlertView*)showAlert:(NSString*)message;
 @end

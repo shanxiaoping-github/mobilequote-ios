@@ -11,8 +11,17 @@
 #import "Product.h"
 #import "ProductTableViewCell.h"
 #import "MathUtil.h"
-
-@interface ProjectDetailViewController (){
+#import "HttpAddress.h"
+#import "HttpClientManager.h"
+#import "HttpEvent.h"
+#import "ProjectTypeContant.h"
+#import "UserInfo.h"
+#import "AppDelegate.h"
+#import "MathUtil.h"
+#import "JsonFactory.h"
+#import "ResponseCode.h"
+#import "Product.h"
+@interface ProjectDetailViewController ()<HttpCallBack>{
     
     NSMutableArray* products;
 }
@@ -23,45 +32,46 @@
 
 @implementation ProjectDetailViewController
 @synthesize projectData=_projectData;
+@synthesize type=_type;
 @synthesize tableView=_tableView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIBarButtonItem *backButton = [ViewUtil genTopLeftButtonItemWithImage:@"com_icon_return_img" target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem=backButton;
-    
     _tableView.separatorStyle = NO;
     //_tableView.rowHeight=UITableViewAutomaticDimension;
     self.automaticallyAdjustsScrollViewInsets=NO;
     
     products = [NSMutableArray new];
     
-    Product *product = [Product new];
-    product.productName=@"钢筋";
-    product.serialNumber=@"xjeoiqueuqoeuq";
-    product.unit=@"宜采";
-    product.lastPrice=[[NSNumber alloc]initWithDouble:20.00];
-    product.currentPrice=[[NSNumber alloc]initWithDouble:20.00];
-    product.currentRank=@"1";
-    product.lastRank=@"2";
-    product.rule=@"17*20mm";
-    product.describe=@"此钢筋特别耐用，物美价廉";
-    product.number=[[NSNumber  alloc]initWithDouble:10];
-    
-    
-    Product *product1 = [Product new];
-    product1.productName=@"钢筋";
-    product1.serialNumber=@"xjeoiqueuqoeuq";
-    product1.unit=@"宜采";
-    product1.lastPrice=[[NSNumber alloc]initWithDouble:20.00];
-    product1.currentPrice=[[NSNumber alloc]initWithDouble:20.00];
-    product1.currentRank=@"1";
-    product1.lastRank=@"2";
-    product1.rule=@"17*20mm";
-    product1.describe=@"此钢筋特别耐用，物美价廉";
-    product1.number=[[NSNumber  alloc]initWithDouble:10];
-    
-    [products addObject:product];
-    [products addObject:product1];
+    [self getProjectDetail:_type turn:[MathUtil numberToString:_projectData.currentNumber]];
+//    Product *product = [Product new];
+//    product.productName=@"钢筋";
+//    product.serialNumber=@"xjeoiqueuqoeuq";
+//    product.unit=@"宜采";
+//    product.lastPrice=[[NSNumber alloc]initWithDouble:20.00];
+//    product.currentPrice=[[NSNumber alloc]initWithDouble:20.00];
+//    product.currentRank=@"1";
+//    product.lastRank=@"2";
+//    product.rule=@"17*20mm";
+//    product.describe=@"此钢筋特别耐用，物美价廉";
+//    product.number=[[NSNumber  alloc]initWithDouble:10];
+//    
+//    
+//    Product *product1 = [Product new];
+//    product1.productName=@"钢筋";
+//    product1.serialNumber=@"xjeoiqueuqoeuq";
+//    product1.unit=@"宜采";
+//    product1.lastPrice=[[NSNumber alloc]initWithDouble:20.00];
+//    product1.currentPrice=[[NSNumber alloc]initWithDouble:20.00];
+//    product1.currentRank=@"1";
+//    product1.lastRank=@"2";
+//    product1.rule=@"17*20mm";
+//    product1.describe=@"此钢筋特别耐用，物美价廉";
+//    product1.number=[[NSNumber  alloc]initWithDouble:10];
+//    
+//    [products addObject:product];
+//    [products addObject:product1];
     
     
     
@@ -107,10 +117,10 @@
    // }
     ProductTableViewCell *productCell = [nibView objectAtIndex:0];
     Product *product =[products objectAtIndex:indexPath.row];
-    productCell.productName.text=[@" " stringByAppendingString:product.productName];
-    productCell.productNumber.text= [@" 产品编码:" stringByAppendingString:product.serialNumber];
-    productCell.productsRule.text=  [@" 规格:" stringByAppendingString:product.rule];
-    productCell.unit.text = [@" 单位:" stringByAppendingString:product.unit];
+    productCell.productName.text=[@" " stringByAppendingString:product.productName==nil?@"":product.productName];
+    productCell.productNumber.text= [@" 产品编码:" stringByAppendingString:product.serialNumber==nil?@"":product.serialNumber];
+    productCell.productsRule.text=  [@" 规格:" stringByAppendingString:product.rule==nil?@"":product.rule];
+    productCell.unit.text = [@" 单位:" stringByAppendingString:product.unit==nil?@"":product.unit];
 
     
     productCell.currentPrice.text = [@" 当前报价:" stringByAppendingString:[MathUtil numberToString:product.currentPrice]];
@@ -126,16 +136,16 @@
     
     
 
-    double  lastPrice = [product.lastPrice doubleValue];
+    double lastPrice = [product.lastPrice doubleValue];
     double lastotalNumber = number*lastPrice;
     
     NSString* lastTotalStr =[MathUtil numberToString:[[NSNumber alloc] initWithDouble:lastotalNumber]];
-    productCell.currentTotal.text=[@" 上轮小计:" stringByAppendingString:lastTotalStr];
+    productCell.lastTotal.text=[@" 上轮小计:" stringByAppendingString:lastTotalStr];
     
     
-    productCell.currentRanking.text=[@" 当前排名:" stringByAppendingString:product.currentRank];
+    productCell.currentRanking.text=[@" 当前排名:" stringByAppendingString:product.currentRank==nil?@"":product.currentRank];
     
-    productCell.lastRanking.text=[@" 上轮排名:" stringByAppendingString:product.lastRank];
+    productCell.lastRanking.text=[@" 上轮排名:" stringByAppendingString:product.lastRank==nil?@"":product.lastRank];
     
   
     return productCell;
@@ -147,4 +157,49 @@
 
 }
 
+-(void)getProjectDetail:(NSString*)type turn:(NSString*)turn{
+    HttpEvent *productEvent  = [HttpEvent new];
+    NSString *url = bind_project_detail;
+    if ([_type isEqualToString:askProjectType]) {
+        url = ask_project_detail;
+    }else if([_type isEqualToString:biddingProjectType]){
+        url = bind_project_detail;
+    }else if([_type isEqualToString:end_bidd_projectType]){
+        url = end_bind_project_detail;
+    }else if ([_type isEqualToString:end_ask_projectType]){
+        url = end_ask_project_detail;
+    }
+    productEvent.actionUrl = url;
+    UserInfo* userInfo =[AppDelegate getAppContext:@"UserInfo"];
+    [productEvent addPrama:userInfo.idStr key:@"userId"];
+    [productEvent addPrama:_projectData.serialNumber key:@"serialNumber"];
+
+    [productEvent addPrama:turn key:@"currenTurn"];
+
+    [productEvent addPrama:_type key:@"type"];
+
+    
+    productEvent.callBack = self;
+    [HttpClientManager sharedClient].event = productEvent;
+    [[HttpClientManager sharedClient] submitHttpEvent];
+        
+    
+}
+-(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
+    
+    NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
+    NSNumber* status = [dic objectForKey:@"status"];
+    int statusValue = [status intValue];
+    if (statusValue == successCode) {
+      NSArray* array = [dic objectForKey:@"productsInfo"];
+      NSArray* productsArrays =  [JsonFactory creatJsonDataArray:array class:[Product class]];
+      [products addObjectsFromArray:productsArrays];
+      [_tableView reloadData];
+      
+    }
+    
+    
+}
+-(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
+}
 @end
