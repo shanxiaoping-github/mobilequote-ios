@@ -17,7 +17,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 产品名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGD-Ix-kN7">
                         <rect key="frame" x="0.0" y="0.0" width="583" height="35"/>
-                        <color key="backgroundColor" red="0.86323629710000005" green="0.89411765340000005" blue="0.76799507089999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.8764899412631203" green="0.89411765340000005" blue="0.88057525445347129" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="vMm-on-2Rx"/>
                         </constraints>

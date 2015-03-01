@@ -20,9 +20,12 @@
 #import "ProjectTypeContant.h"
 #import "ResponseCode.h"
 #import "ProjectDetailViewController.h"
+#import "MBProgressHUDManager.h"
+#import "MBProgressHUD.h"
 @interface EndProjectViewController ()<UITableViewDataSource,UITableViewDelegate,HttpCallBack>{
   NSMutableArray *projectDatas;
   NSInteger index;
+  MBProgressHUD* hud;
 }
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -179,11 +182,17 @@
     [endEvent addPrama:type key:@"type"];
     endEvent.callBack=self;
     [HttpClientManager sharedClient].event = endEvent;
+    if (hud) {
+        [hud show:YES];
+    }else{
+        hud = [MBProgressHUDManager showLoad:self.view];
+    }
     [[HttpClientManager sharedClient] submitHttpEvent];
     
 }
 
 -(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
+    [hud hide:YES];
     NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
     NSNumber* status=[dic objectForKey:@"status"];
     int statusValue = [status intValue];
@@ -201,5 +210,6 @@
     
 }
 -(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
+    [hud hide:YES];
 }
 @end

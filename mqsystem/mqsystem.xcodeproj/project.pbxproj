@@ -47,6 +47,8 @@
 		5C7C7E121A7CC06600E390B1 /* HttpEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C7E111A7CC06600E390B1 /* HttpEvent.m */; };
 		5C7C7E161A7CC55000E390B1 /* HttpClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C7E151A7CC55000E390B1 /* HttpClientManager.m */; };
 		5C7C7E191A7CCD8900E390B1 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C7E181A7CCD8900E390B1 /* UserInfo.m */; };
+		5C7C7E331A7E022B00E390B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C7E321A7E022B00E390B1 /* MBProgressHUD.m */; };
+		5C7C7E361A7E349800E390B1 /* MBProgressHUDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C7E351A7E349800E390B1 /* MBProgressHUDManager.m */; };
 		5C7DA4AA1A74AA2300E57E46 /* CommonTopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DA4A81A74AA2300E57E46 /* CommonTopButton.m */; };
 		5C7DA4AB1A74AA2300E57E46 /* CommonTopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DA4A81A74AA2300E57E46 /* CommonTopButton.m */; };
 		5C7DA4AE1A74AAFB00E57E46 /* com_icon_return_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7DA4AC1A74AAFB00E57E46 /* com_icon_return_img@2x.png */; };
@@ -64,6 +66,10 @@
 		5CAB586F1A76878200642B6E /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAB586D1A76878200642B6E /* ProjectTableViewCell.xib */; };
 		5CAB58871A792A9700642B6E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB58861A792A9700642B6E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5CAB58941A792DE500642B6E /* JsonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB58921A792DE500642B6E /* JsonFactory.m */; };
+		5CC5514A1A9EE6DC00A8E99D /* quoteBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CC551491A9EE6DC00A8E99D /* quoteBottom.xib */; };
+		5CC5514B1A9EE6DC00A8E99D /* quoteBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CC551491A9EE6DC00A8E99D /* quoteBottom.xib */; };
+		5CC5514E1A9EF33E00A8E99D /* quoteBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5514D1A9EF33E00A8E99D /* quoteBottomView.m */; };
+		5CC5514F1A9EF33E00A8E99D /* quoteBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5514D1A9EF33E00A8E99D /* quoteBottomView.m */; };
 		5CC5ADCF1A46CD6600DF4156 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5ADCE1A46CD6600DF4156 /* main.m */; };
 		5CC5ADD21A46CD6600DF4156 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5ADD11A46CD6600DF4156 /* AppDelegate.m */; };
 		5CC5ADDA1A46CD6600DF4156 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CC5ADD91A46CD6600DF4156 /* Images.xcassets */; };
@@ -155,6 +161,10 @@
 		5C7C7E181A7CCD8900E390B1 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		5C7C7E1A1A7CCFF400E390B1 /* ResponseCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResponseCode.h; sourceTree = "<group>"; };
 		5C7C7E1B1A7CF5C900E390B1 /* ProjectTypeContant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectTypeContant.h; sourceTree = "<group>"; };
+		5C7C7E311A7E022B00E390B1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		5C7C7E321A7E022B00E390B1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		5C7C7E341A7E349800E390B1 /* MBProgressHUDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUDManager.h; sourceTree = "<group>"; };
+		5C7C7E351A7E349800E390B1 /* MBProgressHUDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUDManager.m; sourceTree = "<group>"; };
 		5C7DA4A81A74AA2300E57E46 /* CommonTopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTopButton.m; sourceTree = "<group>"; };
 		5C7DA4A91A74AA2300E57E46 /* CommonTopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTopButton.h; sourceTree = "<group>"; };
 		5C7DA4AC1A74AAFB00E57E46 /* com_icon_return_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "com_icon_return_img@2x.png"; sourceTree = "<group>"; };
@@ -180,6 +190,9 @@
 		5CAB58861A792A9700642B6E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		5CAB58921A792DE500642B6E /* JsonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonFactory.m; sourceTree = "<group>"; };
 		5CAB58931A792DE500642B6E /* JsonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonFactory.h; sourceTree = "<group>"; };
+		5CC551491A9EE6DC00A8E99D /* quoteBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = quoteBottom.xib; sourceTree = "<group>"; };
+		5CC5514C1A9EF33E00A8E99D /* quoteBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quoteBottomView.h; sourceTree = "<group>"; };
+		5CC5514D1A9EF33E00A8E99D /* quoteBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = quoteBottomView.m; sourceTree = "<group>"; };
 		5CC5ADC91A46CD6600DF4156 /* mqsystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mqsystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC5ADCD1A46CD6600DF4156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CC5ADCE1A46CD6600DF4156 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -244,6 +257,9 @@
 				5CAB586B1A76878200642B6E /* ProjectTableViewCell.h */,
 				5CAB586C1A76878200642B6E /* ProjectTableViewCell.m */,
 				5CAB586D1A76878200642B6E /* ProjectTableViewCell.xib */,
+				5CC551491A9EE6DC00A8E99D /* quoteBottom.xib */,
+				5CC5514C1A9EF33E00A8E99D /* quoteBottomView.h */,
+				5CC5514D1A9EF33E00A8E99D /* quoteBottomView.m */,
 			);
 			path = viewData;
 			sourceTree = "<group>";
@@ -414,6 +430,17 @@
 			path = ../httpclient;
 			sourceTree = "<group>";
 		};
+		5C7C7E301A7E020C00E390B1 /* HubProgress */ = {
+			isa = PBXGroup;
+			children = (
+				5C7C7E311A7E022B00E390B1 /* MBProgressHUD.h */,
+				5C7C7E321A7E022B00E390B1 /* MBProgressHUD.m */,
+				5C7C7E341A7E349800E390B1 /* MBProgressHUDManager.h */,
+				5C7C7E351A7E349800E390B1 /* MBProgressHUDManager.m */,
+			);
+			path = HubProgress;
+			sourceTree = "<group>";
+		};
 		5C7DA4A71A74AA0F00E57E46 /* custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +505,7 @@
 		5CC5ADC01A46CD6500DF4156 = {
 			isa = PBXGroup;
 			children = (
+				5C7C7E301A7E020C00E390B1 /* HubProgress */,
 				5C7C7E081A7CA98100E390B1 /* Networking Extensions */,
 				5C7C7DD01A7CA94800E390B1 /* Vendor */,
 				5CAB58841A792A8000642B6E /* jsonkit */,
@@ -599,6 +627,7 @@
 				TargetAttributes = {
 					5CC5ADC81A46CD6500DF4156 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 34R4GTAD8D;
 					};
 					5CC5ADE11A46CD6600DF4156 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -633,6 +662,7 @@
 				5C7DA4AE1A74AAFB00E57E46 /* com_icon_return_img@2x.png in Resources */,
 				5C463F091A46FF5200015AF3 /* com_button_blue_img.png in Resources */,
 				5CE896F81A46E026007BF54E /* login.storyboard in Resources */,
+				5CC5514A1A9EE6DC00A8E99D /* quoteBottom.xib in Resources */,
 				5C7DA4B01A74AAFB00E57E46 /* com_icon_return_img.png in Resources */,
 				5CAB586F1A76878200642B6E /* ProjectTableViewCell.xib in Resources */,
 				5C463F0B1A47000900015AF3 /* list_2_line_img.png in Resources */,
@@ -647,6 +677,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C7DA4B11A74AAFB00E57E46 /* com_icon_return_img.png in Resources */,
+				5CC5514B1A9EE6DC00A8E99D /* quoteBottom.xib in Resources */,
 				5C7DA4AF1A74AAFB00E57E46 /* com_icon_return_img@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,6 +703,7 @@
 				5C0A66671A74D4B500088494 /* ProjectData.m in Sources */,
 				5C0A666A1A7503DA00088494 /* ProjectDetailViewController.m in Sources */,
 				5C64DD681A4EA64D00A3E304 /* ViewUtil.m in Sources */,
+				5C7C7E361A7E349800E390B1 /* MBProgressHUDManager.m in Sources */,
 				5C7C7E021A7CA96100E390B1 /* UIAlertView+AFNetworking.m in Sources */,
 				5CA9A48E1A66A76D007ED8C9 /* MySelfViewController.m in Sources */,
 				5C7C7DE81A7CA95900E390B1 /* AFNetworkReachabilityManager.m in Sources */,
@@ -683,6 +715,7 @@
 				5C7DA4AA1A74AA2300E57E46 /* CommonTopButton.m in Sources */,
 				5CE897181A46E56A007BF54E /* AppDelegate.h in Sources */,
 				5C7C7E121A7CC06600E390B1 /* HttpEvent.m in Sources */,
+				5C7C7E331A7E022B00E390B1 /* MBProgressHUD.m in Sources */,
 				5CA9A48B1A66A74E007ED8C9 /* AboutViewController.m in Sources */,
 				5C0A666E1A750CA400088494 /* ProductTableViewCell.m in Sources */,
 				5C7C7E031A7CA96100E390B1 /* UIButton+AFNetworking.m in Sources */,
@@ -698,6 +731,7 @@
 				5C7C7E0B1A7CA9A300E390B1 /* AFAppDotNetAPIClient.m in Sources */,
 				5C7C7DE71A7CA95900E390B1 /* AFHTTPSessionManager.m in Sources */,
 				5C64DD511A4E749A00A3E304 /* ShowUtil.m in Sources */,
+				5CC5514E1A9EF33E00A8E99D /* quoteBottomView.m in Sources */,
 				5C64DD751A4EAE5400A3E304 /* HomeViewController.m in Sources */,
 				5C7C7DE51A7CA95900E390B1 /* AFHTTPRequestOperation.m in Sources */,
 				5C0A66591A74CADC00088494 /* ProjectCell.m in Sources */,
@@ -712,6 +746,7 @@
 			files = (
 				5C64DD4E1A4E726B00A3E304 /* StringUtil.m in Sources */,
 				5CC5ADE91A46CD6600DF4156 /* mqsystemTests.m in Sources */,
+				5CC5514F1A9EF33E00A8E99D /* quoteBottomView.m in Sources */,
 				5C64DD691A4EA64D00A3E304 /* ViewUtil.m in Sources */,
 				5C64DD521A4E749A00A3E304 /* ShowUtil.m in Sources */,
 				5C7DA4AB1A74AA2300E57E46 /* CommonTopButton.m in Sources */,
@@ -812,10 +847,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = mqsystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos8.1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -826,10 +863,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = mqsystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos8.1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

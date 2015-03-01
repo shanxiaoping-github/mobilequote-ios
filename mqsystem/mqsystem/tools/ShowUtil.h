@@ -16,6 +16,11 @@
 /*
  *显示提示框
  */
++(UIAlertView*)showAlert:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTtile:(NSString *)cancleStr otherButtonTitles:(NSString *)otherStr style:(UIAlertViewStyle) style;
+
+/*
+ *显示提示框
+ */
 +(UIAlertView*)showAlert:(NSString*)title
          message:(NSString*)message
          delegate:(id)delegate

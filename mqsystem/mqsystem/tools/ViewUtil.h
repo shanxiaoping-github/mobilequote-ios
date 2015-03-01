@@ -15,6 +15,7 @@
 @interface ViewUtil : NSObject
 
 + (UIBarButtonItem*) genTopLeftButtonItemWithImage:(NSString*) imageName target:(id) target action:(SEL) action;
-
+/*从nib获取view*/
++(UIView*) getNibView:(NSString*)nibName;
 
 @end

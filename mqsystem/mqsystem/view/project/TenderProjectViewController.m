@@ -20,9 +20,12 @@
 #import "ProjectTypeContant.h"
 #import "ResponseCode.h"
 #import "ProjectDetailViewController.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUDManager.h"
 
 @interface TenderProjectViewController ()<UITableViewDelegate,UITableViewDataSource,HttpCallBack>{
     NSMutableArray *projectDatas;
+    MBProgressHUD* hud;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *empty;
@@ -81,7 +84,7 @@
     bindEvent.callBack=self;
     
     [HttpClientManager sharedClient].event = bindEvent;
-    
+    hud=[MBProgressHUDManager showLoad:self.view];
     [[HttpClientManager sharedClient] submitHttpEvent];
     
 
@@ -141,6 +144,7 @@
     ProjectDetailViewController* productController =  [segue destinationViewController];
     productController.projectData = sender;
     productController.type =biddingProjectType;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -149,6 +153,7 @@
     
 }
 -(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
+    [hud hide:YES];
     NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
     NSNumber* status=[dic objectForKey:@"status"];
     int statusValue = [status intValue];
@@ -164,5 +169,6 @@
     }
 }
 -(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
+    [hud hide:YES];
 }
 @end

@@ -20,6 +20,10 @@
     UIBarButtonItem* barButtonItem= [[UIBarButtonItem alloc] initWithCustomView:meButton];
     return barButtonItem;
 }
-
+/*获取nibview*/
++ (UIView*) getNibView:(NSString *)nibName{
+    NSArray* nibView =[[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
+    return [nibView objectAtIndex:0];
+}
 
 @end

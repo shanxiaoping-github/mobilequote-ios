@@ -17,7 +17,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xl-w8-MNO">
                         <rect key="frame" x="0.0" y="0.0" width="422" height="35"/>
-                        <color key="backgroundColor" red="0.86323629710000005" green="0.89411765340000005" blue="0.76799507089999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.87648994130000002" green="0.89411765340000005" blue="0.88057525449999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="iQM-Zd-fng"/>
                         </constraints>

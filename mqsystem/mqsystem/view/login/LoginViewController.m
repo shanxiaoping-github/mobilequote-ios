@@ -19,8 +19,11 @@
 #import <UIKit/UIKit.h>
 #import "UserInfo.h"
 #import "AppDelegate.h"
-
-@interface LoginViewController ()<HttpCallBack>
+#import "MBProgressHUDManager.h"
+#import "MBProgressHUD.h"
+@interface LoginViewController ()<HttpCallBack>{
+    MBProgressHUD* hud;
+}
 
 @end
 
@@ -72,42 +75,31 @@
     loginEvent.callBack=self;
     HttpClientManager* httpClient = [HttpClientManager sharedClient];
     httpClient.event = loginEvent;
+    hud = [MBProgressHUDManager showLoad:@"登录中..." view:self.view];
+    //hud = [MBProgressHUDManager showLoad:self.view];
     [httpClient submitHttpEvent];
     
     
     
 }
 -(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
-    
+    [hud hide:YES];
     NSDictionary* result=[JsonFactory creatJsonDataItem:operation.responseString];
     NSNumber *status=[result objectForKey:@"status"];
     int statusValue = [status intValue];
-    //UIAlertView* alertView=nil;
-    
-    
     if (statusValue == login_success) {
         NSDictionary* userItem = [result objectForKey:@"userInfo"];
         UserInfo* userInfo=[JsonFactory creatJsonDataItem:userItem class:[UserInfo class]];
         [AppDelegate addAppContext:userInfo];
+        
         [self performSegueWithIdentifier:story_home_step sender:nil];
-        
-       // alertView = [ShowUtil showAlert:@"登录成功"];
     }else if(statusValue == login_did){
-        //alertView = [ShowUtil showAlert:@"已登录"];
-        
-    }else if(statusValue ==login_faile){
-       // alertView = [ShowUtil showAlert:@"登录失败"];
-        
+        [MBProgressHUDManager showMessage:@"已登录" view:self.view];
+    }else{
+        [MBProgressHUDManager showMessage:@"用户名和密码错误" view:self.view];
     }
-    
-//    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(dismissAler:) userInfo:alertView repeats:NO];
-    
- //   [self performSegueWithIdentifier:story_home_step sender:nil];
 }
 -(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
+    [hud hide:YES];
 }
-//-(void)dismissAler:(UIAlertView*)alerView{
-//    [alerView dismissWithClickedButtonIndex:nil animated:NO];
-//    //alerView=nil;
-//}
 @end

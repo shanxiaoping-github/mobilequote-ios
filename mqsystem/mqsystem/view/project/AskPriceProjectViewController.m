@@ -20,8 +20,11 @@
 #import "ProjectData.h"
 #import "ResponseCode.h"
 #import "ProjectDetailViewController.h"
+#import "MBProgressHUDManager.h"
+#import "MBProgressHUD.h"
 @interface AskPriceProjectViewController ()<UITableViewDelegate,UITableViewDataSource,HttpCallBack>{
-    NSMutableArray *projectDatas;
+    NSMutableArray* projectDatas;
+    MBProgressHUD* hud;
     
     
 }
@@ -78,6 +81,7 @@
     askEvent.callBack=self;
     
     [HttpClientManager sharedClient].event = askEvent;
+    hud = [MBProgressHUDManager showLoad:self.view];
     
     [[HttpClientManager sharedClient] submitHttpEvent];
     
@@ -140,6 +144,7 @@
    ProjectDetailViewController* productController =  [segue destinationViewController];
     productController.projectData = sender;
     productController.type =askProjectType;
+   
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -147,6 +152,7 @@
     
 }
 -(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
+    [hud hide:YES];
     NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
     NSNumber* status=[dic objectForKey:@"status"];
     int statusValue = [status intValue];
@@ -158,11 +164,12 @@
         [_tableView reloadData];
     }else{
         _empty.hidden=NO;
-     _empty.text=@"暂无项目";
+        _empty.text=@"暂无项目";
     }
     
 }
 -(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
+    [hud hide:YES];
 }
 
 @end

@@ -13,4 +13,6 @@
 +(NSString*)numberToString:(NSNumber*)number;
 /*string转number*/
 +(NSNumber*)stringToNumber:(NSString*)str;
+/*判断是否是数字*/
++(BOOL)isNumber:(NSString *)str;
 @end
