@@ -28,4 +28,18 @@
 #define end_ask_project_detail @"getEndComparisonProduct.action?action=getEndComparisonProduct";
 /*结束的招投标项目产品*/
 #define end_bind_project_detail @"getEndTenderProjectProduct.action?action=getEndTenderProjectProduct"
+
+
+
+/*招投标报价*/
+#define project_bidding_quote @"tenderProjectQuote.action?action=tenderProjectQuote"
+/*询比价*/
+#define project_comparison_quote @"comparisonQuote.action?action=comparisonQuote"
+/*询比价操作*/
+#define project_comparison_operate @"projectComparisonOperate.action?action=projectComparisonOperate"
+
+/*招投标项目修改报价*/
+#define project_bidding_modification @"editTenderProjectQuote.action?action=editTenderProjectQuote"
+
+
 #endif

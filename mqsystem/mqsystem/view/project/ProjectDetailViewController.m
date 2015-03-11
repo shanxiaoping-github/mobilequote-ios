@@ -20,21 +20,39 @@
 #import "MathUtil.h"
 #import "JsonFactory.h"
 #import "ResponseCode.h"
-#import "Product.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUDManager.h"
 #import "ViewUtil.h"
 #import "ProjectTypeContant.h"
 #import "MathUtil.h"
 #import "ShowUtil.h"
-#import "MBProgressHUDManager.h"
-/*修改价格*/
-#define TOUCH_CHANGER_PRICE @"changer_price"
+#import "TimeUtil.h"
+#import "QuoteProduct.h"
+#import "StringUtil.h"
+#import "HttpAddress.h"
 
+/*修改价格*/
+//#define TOUCH_CHANGER_PRICE @"changer_price"
+
+/*获得产品*/
+#define GET_PRODUCT_TYPE @"getProductype"
+/*招投标报价*/
+#define GET_BIDDING_QUOTE @"biddingQuotetype"
+/*修改价格*/
+#define GET_MODIFICATION @"modificationType"
+/*询价操作*/
+#define GET_ASKPRICE_OPERATE @"askPriceOperate"
+/*询价拒绝*/
+#define GET_ASK_REFUND @"askPriceRefund"
+/*询价修改*/
+#define GET_ASK_MODIFY @"askPriceModify"
+/*询价报价*/
+#define GET_ASK_QUOTE  @"askPriceQuote"
 @interface ProjectDetailViewController ()<HttpCallBack,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
     NSMutableArray* products;
     MBProgressHUD* hud;
     Product* currentProduct;
+    NSString* getType;
     //NSString* touchType;
 }
 @property (strong, nonatomic) IBOutlet UILabel *empty;
@@ -148,7 +166,7 @@
             }
             if (currenTurn>1&&_projectData.isCurrentQuote) {
                 
-            
+                _quote.backgroundColor=[UIColor darkGrayColor];
             }
             /**/
             UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(quoteAction)];
@@ -174,6 +192,71 @@
         _bottomView.hidden = YES;
         _bottomView1.hidden = NO;
         
+        /*当前询价*/
+        _currentPrice1.text = [self totalPrice:0];
+        /*上轮报价*/
+        if ([_projectData.currentNumber intValue]==1) {
+            
+            _lastPrice1.text=@"暂无";
+        }else{
+            _lastPrice1.text = [self totalPrice:1];
+        }
+        /*税率*/
+        NSString* rateString = [MathUtil numberToString:_projectData.rate];
+        _rate1.text =[rateString stringByAppendingString:@"%"];
+        /*轮次*/
+        NSString* turnString = [MathUtil numberToString:_projectData.currentNumber];
+        _currentTurn1.text = [[@"第" stringByAppendingString:turnString]stringByAppendingString:@"轮"];
+        
+        /*询价情形*/
+        if ([_projectData.currentNumber intValue]==currenTurn) {
+            
+           
+         
+            
+            if ([_projectData.currentNumber intValue] > 1) {
+                _refund.hidden = NO;
+                _modification.hidden = NO;
+                _quote1.hidden = YES;
+                if (_projectData.isCurrentQuote) {
+                    _refund.backgroundColor=[UIColor darkGrayColor];
+                    _modification.backgroundColor = [UIColor darkGrayColor];
+                }
+                /*拒绝*/
+                UITapGestureRecognizer* refundRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(refundAction)];
+                _refund.userInteractionEnabled = YES;
+                [_refund addGestureRecognizer:refundRecognizer];
+                /*修改*/
+                UITapGestureRecognizer* modificationRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(askModificationAction)];
+                _modification.userInteractionEnabled = YES;
+                [_modification addGestureRecognizer:modificationRecognizer];
+                
+            }else{
+                _refund.hidden = YES;
+                _modification.hidden = YES;
+                _quote1.hidden=NO;
+                
+                if(_projectData.isCurrentQuote) {
+                  _quote1.text = @"修改";
+                }
+                
+                UITapGestureRecognizer* recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(askAction)];
+                _quote1.userInteractionEnabled = YES;
+                [_quote1 addGestureRecognizer:recognizer];
+            
+            }
+        }else{
+            
+            _refund.hidden=YES;
+            _modification.hidden=YES;
+            _quote.hidden=YES;
+        }
+
+        
+        
+        
+        
+        
     }
 }
 
@@ -184,11 +267,11 @@
         Product* product = [products objectAtIndex:i];
         switch (type) {
             case 0:
-                total+=[product.currentPrice floatValue];
+                total+=[product.currentPrice floatValue]*[product.number floatValue];
                 break;
                 
             case 1:
-                total+=[product.lastPrice floatValue];
+                total+=[product.lastPrice floatValue]*[product.number floatValue];
                 break;
         }
         
@@ -202,19 +285,216 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+/*拒绝*/
+-(void)refundAction{
+    NSLog(@"refund");
+    if (_projectData.isCurrentQuote) {
+        return;
+    }
+    NSDate* endDate = [TimeUtil stringToNsData:[_projectData endTime] format:DATA1];
+    NSDate* nowDate = [NSDate date];
+    NSInteger compareResult =  [TimeUtil compareData:endDate toData:nowDate];
+    if (compareResult==1) {
+        [MBProgressHUDManager showMessage:@"项目已截止,无法操作" view: self.view];
+        return;
+    }
+    /*询价*/
+    NSArray* jsonArray = [self getQuoteProduct];
+    NSString* jsonString = [JsonFactory pageJsonDataArry:jsonArray];
+    UserInfo* userInfo = [AppDelegate getAppContext:@"UserInfo"];
+    [self comparisonOperate:userInfo.idStr operateCode:@"0" productQuoterInfo:jsonString serialNumber:_projectData.serialNumber turn:[MathUtil numberToString:_projectData.currentNumber]];
+    getType = GET_ASK_REFUND;
+    
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+/*询比价修改*/
+-(void)askModificationAction{
+    NSLog(@"askNodification");
+    if (_projectData.isCurrentQuote&&[_projectData.currentNumber intValue]!=1) {
+        return;
+    }
+    NSDate* endDate = [TimeUtil stringToNsData:[_projectData endTime] format:DATA1];
+    NSDate* nowDate = [NSDate date];
+    NSInteger compareResult =  [TimeUtil compareData:endDate toData:nowDate];
+    if (compareResult == 1) {
+        [MBProgressHUDManager showMessage:@"项目已截止,无法操作" view: self.view];
+        return;
+    }
+    if ([self isChange] == NO) {
+        [MBProgressHUDManager showMessage:@"未发现有产品报价变动" view: self.view];
+        return;
+    }
+    NSArray* jsonArray = [self getQuoteProduct];
+    NSString* jsonString = [JsonFactory pageJsonDataArry:jsonArray];
+    /*报价*/
+    UserInfo* userInfo = [AppDelegate getAppContext:@"UserInfo"];
+    [self comparisonOperate:userInfo.idStr operateCode:@"1" productQuoterInfo:jsonString serialNumber:_projectData.serialNumber turn:[MathUtil numberToString:_projectData.currentNumber]];
+    getType = GET_ASK_QUOTE;
+}
+/*询价处理*/
+-(void)askAction{
+    NSLog(@"ask");
+    if (_projectData.isCurrentQuote&&[_projectData.currentNumber intValue]!=1) {
+        return;
+    }
+    
+    NSDate* endDate = [TimeUtil stringToNsData:[_projectData endTime] format:DATA1];
+    NSDate* nowDate = [NSDate date];
+    NSInteger compareResult =  [TimeUtil compareData:endDate toData:nowDate];
+    if (compareResult == 1) {
+        [MBProgressHUDManager showMessage:@"项目已截止,无法操作" view: self.view];
+        return;
+    }
+    
+    if ([self isChange] == NO) {
+        [MBProgressHUDManager showMessage:@"未发现有产品报价变动" view: self.view];
+        return;
+    }
+    
+    NSArray* jsonArray = [self getQuoteProduct];
+    NSString* jsonString = [JsonFactory pageJsonDataArry:jsonArray];
+    /*报价*/
+    UserInfo* userInfo = [AppDelegate getAppContext:@"UserInfo"];
+    
+    [self comparisonOperate:userInfo.idStr operateCode:_projectData.isCurrentQuote?@"2":@"1" productQuoterInfo:jsonString serialNumber:_projectData.serialNumber turn:[MathUtil numberToString:_projectData.currentNumber]];
+    if (_projectData.isCurrentQuote) {
+        getType = GET_ASK_MODIFY;
+    }else{
+        getType = GET_ASK_QUOTE;
+    }
+    
+}
+
 /*报价处理*/
 -(void)quoteAction{
-    NSLog(@"dddddddddd");
+    if ([_projectData isCurrentQuote]&&[_projectData.currentNumber intValue] > 1) {
+        return;
+    }
+    
+    NSDate* endDate = [TimeUtil stringToNsData:[_projectData endTime] format:DATA1];
+    NSDate* nowDate = [NSDate date];
+    NSInteger compareResult =  [TimeUtil compareData:endDate toData:nowDate];
+    if (compareResult==1) {
+        [MBProgressHUDManager showMessage:@"项目已截止,无法操作" view: self.view];
+        return;
+    }
+    
+    if ([self isChange] == NO) {
+        [MBProgressHUDManager showMessage:@"未发现有产品报价变动" view: self.view];
+        return;
+    }
+    
+    NSArray* jsonArray = [self getQuoteProduct];
+    NSString* jsonString = [JsonFactory pageJsonDataArry:jsonArray];
+    /*报价*/
+    UserInfo* userInfo = [AppDelegate getAppContext:@"UserInfo"];
+
+    if ([_projectData isCurrentQuote]&&[[_projectData currentNumber] intValue] == 1) {//修改
+        [self biddingModify:userInfo.idStr operateCode:@"2" productQuoterInfo:jsonString serialNumber:_projectData.serialNumber type:@"4" turn:[MathUtil numberToString:_projectData.currentNumber]];
+    }else{//报价
+      
+        [self biddingQuote:userInfo.idStr operateCode:@"1" productQuoterInfo:jsonString serialNumber:_projectData.serialNumber type:@"4" turn:[MathUtil numberToString:_projectData.currentNumber]];
+    }
+   
+}
+/*是否产品价格有变动*/
+-(BOOL)isChange{
+    for (int i = 0;i < [products count]; i++) {
+        Product* product = [products objectAtIndex:i];
+        if ([product isChangePrice:[[_projectData currentNumber] intValue]]) {
+            return YES;
+        }
+    }
+    return NO;
+
+}
+
+/*招投标报价*/
+-(void)biddingQuote:(NSString*)userId operateCode:(NSString*)operateCode productQuoterInfo:(NSString*)productInfo serialNumber:(NSString*)serialNumber type:(NSString*)type turn:(NSString*)currenTurn{
+    
+    HttpEvent *quoteEvent =[HttpEvent new];
+    quoteEvent.actionUrl=project_bidding_quote;
+    [quoteEvent addPrama:operateCode key:@"operateCode"];
+    [quoteEvent addPrama:userId key:@"userId"];
+    [quoteEvent addPrama:type key:@"type"];
+    [quoteEvent addPrama:serialNumber key:@"serialNumber"];
+    [quoteEvent addPrama:currenTurn key:@"currenTurn"];
+    [quoteEvent addPrama:productInfo key:@"productQuoteInfo"];
+    quoteEvent.callBack=self;
+    HttpClientManager* httpClient = [HttpClientManager sharedClient];
+    httpClient.event = quoteEvent;
+    hud = [MBProgressHUDManager showLoad:@"报价中..." view:self.view];
+    getType = GET_PRODUCT_TYPE;
+    [httpClient submitHttpEvent];
+
+}
+/*招投标修改*/
+-(void)biddingModify:(NSString*)userId operateCode:(NSString*)operateCode productQuoterInfo:(NSString*)productInfo serialNumber:(NSString*)serialNumber type:(NSString*)type turn:(NSString*)currenTurn{
+    HttpEvent *quoteEvent =[HttpEvent new];
+    quoteEvent.actionUrl=project_bidding_modification;
+    [quoteEvent addPrama:operateCode key:@"operateCode"];
+    [quoteEvent addPrama:userId key:@"userId"];
+    [quoteEvent addPrama:type key:@"type"];
+    [quoteEvent addPrama:serialNumber key:@"serialNumber"];
+    [quoteEvent addPrama:currenTurn key:@"currenTurn"];
+    [quoteEvent addPrama:productInfo key:@"productQuoteInfo"];
+    quoteEvent.callBack=self;
+    HttpClientManager* httpClient = [HttpClientManager sharedClient];
+    httpClient.event = quoteEvent;
+    hud = [MBProgressHUDManager showLoad:@"报价中..." view:self.view];
+    getType = GET_MODIFICATION;
+    [httpClient submitHttpEvent];
+}
+
+/*询比价报价*/
+-(void)comparisonOperate:(NSString*)userId operateCode:(NSString*)operateCode productQuoterInfo:(NSString*)productInfo serialNumber:(NSString*)serialNumber turn:(NSString*)currenTurn{
+    
+    HttpEvent *askEvent =[HttpEvent new];
+    askEvent.actionUrl=project_comparison_operate;
+    [askEvent addPrama:operateCode key:@"operateCode"];
+    [askEvent addPrama:userId key:@"userId"];
+    //[quoteEvent addPrama:type key:@"type"];
+    [askEvent addPrama:serialNumber key:@"serialNumber"];
+    [askEvent addPrama:currenTurn key:@"currenTurn"];
+    [askEvent addPrama:productInfo key:@"productQuoteInfo"];
+    askEvent.callBack=self;
+    HttpClientManager* httpClient = [HttpClientManager sharedClient];
+    httpClient.event = askEvent;
+    hud = [MBProgressHUDManager showLoad:@"询价中..." view:self.view];
+    getType = GET_ASKPRICE_OPERATE;
+    [httpClient submitHttpEvent];
+    
+    
+}
+
+
+/*获取改变报价后的products*/
+-(NSArray*)getChangePriceProducts{
+    NSMutableArray* changeProducts= [[NSMutableArray alloc] init];
+    for (int i = 0; i < [products count]; i++) {
+        Product* product = [products objectAtIndex:i];
+        if ([product isChangePrice:[_projectData.currentNumber intValue]]) {
+            [changeProducts addObject:product];
+        }
+    }
+    return changeProducts;
+}
+/*获得报价指令产品*/
+-(NSArray*)getQuoteProduct{
+    
+    NSMutableArray* quoteProducts = [[NSMutableArray alloc]init];
+    NSArray* changePriceProducts = [self getChangePriceProducts];
+    for (int i = 0; i < [changePriceProducts count]; i++) {
+        Product* product = [changePriceProducts objectAtIndex:i];
+        QuoteProduct* quoteProduct = [QuoteProduct new];
+        quoteProduct.serialNumber = product.serialNumber;
+        quoteProduct.price = product.currentPrice;
+        quoteProduct.rate = product.rate;
+        [quoteProducts addObject:quoteProduct];
+    }
+    return quoteProducts;
+    
 }
 /*修改当前报价*/
 -(void)changePrice:(id)sender{
@@ -270,8 +550,6 @@
     
     productCell.currentPrice.userInteractionEnabled=YES;
     [productCell.currentPrice addGestureRecognizer:changePrice];
-    
-    
     
     
     
@@ -335,27 +613,113 @@
     }else{
         hud = [MBProgressHUDManager showLoad:self.view];
     }
+    getType = GET_PRODUCT_TYPE;
     [[HttpClientManager sharedClient] submitHttpEvent];
         
     
 }
 -(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
     [hud hide:YES];
-    NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
-    NSNumber* status = [dic objectForKey:@"status"];
-    int statusValue = [status intValue];
-    if (statusValue == successCode) {
-      _empty.hidden=YES;
-      NSArray* array = [dic objectForKey:@"productsInfo"];
-      NSArray* productsArrays =  [JsonFactory creatJsonDataArray:array class:[Product class]];
-      [products addObjectsFromArray:productsArrays];
-      [_tableView reloadData];
-      /*设置类型*/
-      [self setProjectType:[_projectData.currentNumber intValue]];
+    if([getType isEqualToString:GET_PRODUCT_TYPE]) {//获得产品列表
+        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
+        NSNumber* status = [dic objectForKey:@"status"];
+        int statusValue = [status intValue];
+        if (statusValue == successCode) {
+        _empty.hidden=YES;
+        NSArray* array = [dic objectForKey:@"productsInfo"];
+        NSArray* productsArrays =  [JsonFactory creatJsonDataArray:array class:[Product class]];
+        [products addObjectsFromArray:productsArrays];
+        [_tableView reloadData];
+        /*设置类型*/
+        [self setProjectType:[_projectData.currentNumber intValue]];
       
-    }else{
-        _empty.hidden=NO;
-        _empty.text=@"暂无产品";
+       }else{
+         _empty.hidden=NO;
+         _empty.text=@"暂无产品";
+       }
+        
+    }else if([getType isEqualToString:GET_BIDDING_QUOTE]){//报价
+        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
+        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSString* statusString = [MathUtil numberToString:statusNumber];
+        if (![statusString isEqualToString:@"0"]) {
+            [MBProgressHUDManager showMessage:@"报价失败" view:self.view];
+            
+        }else{
+            _projectData.isCurrentQuote=YES;
+            [MBProgressHUDManager showMessage:@"报价成功" view:self.view];
+        }
+    }else if([getType isEqualToString:GET_MODIFICATION]){//修改
+        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
+        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSString* statusString = [MathUtil numberToString:statusNumber];
+        
+        if (![statusString isEqualToString:@"0"]) {
+            [MBProgressHUDManager showMessage:@"修改失败" view:self.view];
+            
+        }else{
+            _projectData.isCurrentQuote=YES;
+            [MBProgressHUDManager showMessage:@"修改成功" view:self.view];
+        }
+    }else if ([getType isEqualToString:GET_ASK_REFUND]){//询价拒绝
+        
+        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
+        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSString* statusString = [MathUtil numberToString:statusNumber];
+        if (![statusString isEqualToString:@"0"]){
+            [MBProgressHUDManager showMessage:@"拒绝失败" view:self.view];
+            
+            
+        }else{
+            _projectData.isCurrentQuote=YES;
+            _refund.backgroundColor = [UIColor darkGrayColor];
+            _modification.backgroundColor = [UIColor darkGrayColor];
+            [MBProgressHUDManager showMessage:@"拒绝成功" view:self.view];
+        }
+
+        
+
+        
+    }else if([getType isEqualToString:GET_ASK_MODIFY]){//询价修改
+        
+        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
+        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSString* statusString = [MathUtil numberToString:statusNumber];
+        if (![statusString isEqualToString:@"0"]){
+            [MBProgressHUDManager showMessage:@"修改失败" view:self.view];
+            
+            
+        }else{
+            _projectData.isCurrentQuote=YES;
+           
+            [MBProgressHUDManager showMessage:@"修改成功" view:self.view];
+        }
+
+        
+        
+        
+    }else if([getType isEqualToString:GET_ASK_QUOTE]){//询价报价
+        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
+        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSString* statusString = [MathUtil numberToString:statusNumber];
+        if (![statusString isEqualToString:@"0"]){
+            [MBProgressHUDManager showMessage:@"询价失败" view:self.view];
+            
+            
+        }else{
+            _projectData.isCurrentQuote=YES;
+            if ([_projectData.currentNumber intValue] == 1) {
+                _quote1.text = @"修改";
+            }else{
+                _refund.backgroundColor = [UIColor darkGrayColor];
+                _modification.backgroundColor = [UIColor darkGrayColor];
+                
+            }
+            
+            [MBProgressHUDManager showMessage:[_projectData.currentNumber intValue] == 1?@"询价成功":@"修改成功" view:self.view];
+        }
+
+        
     }
 }
 -(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
@@ -363,23 +727,25 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==1) {
+    if (buttonIndex == 1){
         UITextField *tf=[alertView textFieldAtIndex:0];
-        [self changeDispose:tf.text];
+        NSString* changePriceString = tf.text;
+        if (![StringUtil isEmpty:changePriceString]) {
+              [self changeDispose:tf.text];
+        }
+      
     }
 }
+
 /*修改当前报价*/
 -(void)changeDispose:(NSString*)changePrice{
-    if (![MathUtil isNumber:changePrice]) {
+    if (![MathUtil isNumber:changePrice]){
         [MBProgressHUDManager showMessage:@"请输入合法的数值" view:self.view];
     }else{
         NSNumber* afterNumber = [MathUtil stringToNumber:changePrice];
         currentProduct.currentPrice = afterNumber;
         [_tableView reloadData];
-        
         [self setProjectType:[_projectData.currentNumber intValue]];
     }
-    
-    
 }
 @end

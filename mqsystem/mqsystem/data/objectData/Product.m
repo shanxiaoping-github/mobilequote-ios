@@ -34,4 +34,17 @@
     self.lastRank = [object objectForKey:@"lastRank"];
     self.currentRank = [object objectForKey:@"currentRank"];
 }
+-(BOOL)isChangePrice:(int)quoteNumber{
+    if (quoteNumber==1) {
+        return YES;
+    }
+    float currentPriceFloat = [_currentPrice floatValue];
+    float lastPriceFloat = [_lastPrice floatValue];
+    if (currentPriceFloat-lastPriceFloat==0) {
+        return NO;
+    }
+    return YES;
+
+}
+
 @end

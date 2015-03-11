@@ -47,8 +47,19 @@
     [jsonObj parse:jsonItem];
     return jsonObj;
 }
++(NSString*)pageJsonDataItem:(id<JsonData>)dataItem{
+    NSDictionary* jsonItemDictionary = [dataItem page];
+    NSString* jsonStr = [jsonItemDictionary JSONString];
+    return jsonStr;
 
-
-
-
+}
++(NSString *)pageJsonDataArry:(NSArray *)datas{
+    NSMutableArray* resultArray = [[NSMutableArray alloc]init];
+    for (int i = 0;i < [datas count]; i++) {
+        id<JsonData> item = [datas objectAtIndex:i];
+        NSDictionary* itemDictionary = [item page];
+        [resultArray addObject:itemDictionary];
+    }
+    return  [resultArray JSONString];
+}
 @end

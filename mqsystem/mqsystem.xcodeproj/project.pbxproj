@@ -55,6 +55,10 @@
 		5C7DA4AF1A74AAFB00E57E46 /* com_icon_return_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7DA4AC1A74AAFB00E57E46 /* com_icon_return_img@2x.png */; };
 		5C7DA4B01A74AAFB00E57E46 /* com_icon_return_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7DA4AD1A74AAFB00E57E46 /* com_icon_return_img.png */; };
 		5C7DA4B11A74AAFB00E57E46 /* com_icon_return_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7DA4AD1A74AAFB00E57E46 /* com_icon_return_img.png */; };
+		5CA1D57B1AA4815B00188541 /* TimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1D57A1AA4815B00188541 /* TimeUtil.m */; };
+		5CA1D57C1AA4815B00188541 /* TimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1D57A1AA4815B00188541 /* TimeUtil.m */; };
+		5CA1D57F1AA4918600188541 /* QuoteProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1D57E1AA4918600188541 /* QuoteProduct.m */; };
+		5CA1D5801AA4918600188541 /* QuoteProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA1D57E1AA4918600188541 /* QuoteProduct.m */; };
 		5CA9A4821A66A6E0007ED8C9 /* AskPriceProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A4811A66A6E0007ED8C9 /* AskPriceProjectViewController.m */; };
 		5CA9A4851A66A6F7007ED8C9 /* TenderProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A4841A66A6F7007ED8C9 /* TenderProjectViewController.m */; };
 		5CA9A4881A66A709007ED8C9 /* EndProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9A4871A66A709007ED8C9 /* EndProjectViewController.m */; };
@@ -169,6 +173,10 @@
 		5C7DA4A91A74AA2300E57E46 /* CommonTopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTopButton.h; sourceTree = "<group>"; };
 		5C7DA4AC1A74AAFB00E57E46 /* com_icon_return_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "com_icon_return_img@2x.png"; sourceTree = "<group>"; };
 		5C7DA4AD1A74AAFB00E57E46 /* com_icon_return_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = com_icon_return_img.png; sourceTree = "<group>"; };
+		5CA1D5791AA4815B00188541 /* TimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeUtil.h; sourceTree = "<group>"; };
+		5CA1D57A1AA4815B00188541 /* TimeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeUtil.m; sourceTree = "<group>"; };
+		5CA1D57D1AA4918600188541 /* QuoteProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteProduct.h; sourceTree = "<group>"; };
+		5CA1D57E1AA4918600188541 /* QuoteProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteProduct.m; sourceTree = "<group>"; };
 		5CA9A4801A66A6E0007ED8C9 /* AskPriceProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskPriceProjectViewController.h; sourceTree = "<group>"; };
 		5CA9A4811A66A6E0007ED8C9 /* AskPriceProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskPriceProjectViewController.m; sourceTree = "<group>"; };
 		5CA9A4831A66A6F7007ED8C9 /* TenderProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenderProjectViewController.h; sourceTree = "<group>"; };
@@ -190,6 +198,7 @@
 		5CAB58861A792A9700642B6E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		5CAB58921A792DE500642B6E /* JsonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonFactory.m; sourceTree = "<group>"; };
 		5CAB58931A792DE500642B6E /* JsonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonFactory.h; sourceTree = "<group>"; };
+		5CB7C0C71AA6046500152AAA /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		5CC551491A9EE6DC00A8E99D /* quoteBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = quoteBottom.xib; sourceTree = "<group>"; };
 		5CC5514C1A9EF33E00A8E99D /* quoteBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quoteBottomView.h; sourceTree = "<group>"; };
 		5CC5514D1A9EF33E00A8E99D /* quoteBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = quoteBottomView.m; sourceTree = "<group>"; };
@@ -242,6 +251,8 @@
 				5C1F15731A7517E900D2DC2C /* Product.m */,
 				5C7C7E171A7CCD8900E390B1 /* UserInfo.h */,
 				5C7C7E181A7CCD8900E390B1 /* UserInfo.m */,
+				5CA1D57D1AA4918600188541 /* QuoteProduct.h */,
+				5CA1D57E1AA4918600188541 /* QuoteProduct.m */,
 			);
 			path = objectData;
 			sourceTree = "<group>";
@@ -278,6 +289,9 @@
 				5C64DD671A4EA64D00A3E304 /* ViewUtil.m */,
 				5CAB58681A767D1700642B6E /* MathUtil.h */,
 				5CAB58691A767D1700642B6E /* MathUtil.m */,
+				5CA1D5791AA4815B00188541 /* TimeUtil.h */,
+				5CA1D57A1AA4815B00188541 /* TimeUtil.m */,
+				5CB7C0C71AA6046500152AAA /* Color.h */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -715,6 +729,7 @@
 				5C7DA4AA1A74AA2300E57E46 /* CommonTopButton.m in Sources */,
 				5CE897181A46E56A007BF54E /* AppDelegate.h in Sources */,
 				5C7C7E121A7CC06600E390B1 /* HttpEvent.m in Sources */,
+				5CA1D57F1AA4918600188541 /* QuoteProduct.m in Sources */,
 				5C7C7E331A7E022B00E390B1 /* MBProgressHUD.m in Sources */,
 				5CA9A48B1A66A74E007ED8C9 /* AboutViewController.m in Sources */,
 				5C0A666E1A750CA400088494 /* ProductTableViewCell.m in Sources */,
@@ -734,6 +749,7 @@
 				5CC5514E1A9EF33E00A8E99D /* quoteBottomView.m in Sources */,
 				5C64DD751A4EAE5400A3E304 /* HomeViewController.m in Sources */,
 				5C7C7DE51A7CA95900E390B1 /* AFHTTPRequestOperation.m in Sources */,
+				5CA1D57B1AA4815B00188541 /* TimeUtil.m in Sources */,
 				5C0A66591A74CADC00088494 /* ProjectCell.m in Sources */,
 				5C7C7DEC1A7CA95900E390B1 /* AFURLResponseSerialization.m in Sources */,
 				5CAB58871A792A9700642B6E /* JSONKit.m in Sources */,
@@ -749,6 +765,8 @@
 				5CC5514F1A9EF33E00A8E99D /* quoteBottomView.m in Sources */,
 				5C64DD691A4EA64D00A3E304 /* ViewUtil.m in Sources */,
 				5C64DD521A4E749A00A3E304 /* ShowUtil.m in Sources */,
+				5CA1D57C1AA4815B00188541 /* TimeUtil.m in Sources */,
+				5CA1D5801AA4918600188541 /* QuoteProduct.m in Sources */,
 				5C7DA4AB1A74AA2300E57E46 /* CommonTopButton.m in Sources */,
 				5C64DD721A4EAB3600A3E304 /* LoginViewController.m in Sources */,
 				5C64DD761A4EAE5400A3E304 /* HomeViewController.m in Sources */,
@@ -847,10 +865,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = mqsystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos8.1;

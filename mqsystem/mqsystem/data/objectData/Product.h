@@ -20,4 +20,6 @@
 @property(nonatomic,strong)NSString* rule;
 @property(nonatomic,strong)NSString* lastRank;
 @property(nonatomic,strong)NSString* currentRank;
+/*是否价格有变动*/
+-(BOOL)isChangePrice:(int)quoteNumber;
 @end

@@ -22,14 +22,11 @@
 }
 
 +(BOOL)isNumber:(NSString *)str{
- 
     NSString* string = [str stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
-        if(string.length > 0)
-        {
-            return NO;
-        } 
-        return YES;
-    
+    if(string.length > 0){
+        return NO;
+    }
+    return YES;
 }
 
 @end

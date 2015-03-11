@@ -76,7 +76,6 @@
     HttpClientManager* httpClient = [HttpClientManager sharedClient];
     httpClient.event = loginEvent;
     hud = [MBProgressHUDManager showLoad:@"登录中..." view:self.view];
-    //hud = [MBProgressHUDManager showLoad:self.view];
     [httpClient submitHttpEvent];
     
     
