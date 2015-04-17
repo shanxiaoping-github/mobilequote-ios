@@ -100,5 +100,6 @@
 }
 -(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
     [hud hide:YES];
+    [MBProgressHUDManager showMessage:@"登录失败" view:self.view];
 }
 @end
