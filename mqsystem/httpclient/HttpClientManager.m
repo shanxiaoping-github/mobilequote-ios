@@ -22,6 +22,9 @@
     dispatch_once(&onceToken, ^{
         instance = [HttpClientManager new];
     });
+    
+    
+    
     return instance;
 }
 /*获得地址*/
@@ -30,6 +33,8 @@
 }
 /*提交请求*/
 -(void)submitHttpEvent{
+
+    
     if (_event) {
         AFHTTPRequestOperationManager  *afhManager = [AFHTTPRequestOperationManager manager];
         [afhManager GET:[HttpClientManager getUrl:_event.actionUrl] parameters:_event.param success:^(AFHTTPRequestOperation *operation, id responseObject) {

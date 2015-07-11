@@ -20,7 +20,7 @@ NSMutableDictionary *applacationContext=nil;
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
  
-
+    
     instance = self;
     [self initWindow];
     [AppDelegate startStory:story_login];
