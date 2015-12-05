@@ -14,7 +14,8 @@
 @synthesize realName=_realName;
 
 -(void)parse:(NSDictionary *)object{
-    self.idStr=[object objectForKey:@"id"];
+    NSNumber* userid = [object objectForKey:@"id"];
+    self.idStr = [userid stringValue];
     self.userName=[object objectForKey:@"userName"];
     self.realName=[object objectForKey:@"realName"];
 }

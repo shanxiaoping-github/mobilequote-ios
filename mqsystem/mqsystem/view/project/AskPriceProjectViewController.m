@@ -41,8 +41,10 @@
     [super viewDidLoad];
     UIBarButtonItem *backButton = [ViewUtil genTopLeftButtonItemWithImage:@"com_icon_return_img" target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem=backButton;
-    _tableView.separatorStyle = NO;
     self.automaticallyAdjustsScrollViewInsets=NO;
+    _tableView.separatorStyle = NO;
+    _tableView.estimatedRowHeight = 60.f;
+    
     
     
     projectDatas = [[NSMutableArray alloc]init];
@@ -156,7 +158,7 @@
     NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
     NSNumber* status=[dic objectForKey:@"status"];
     int statusValue = [status intValue];
-    if (statusValue==successCode) {
+    if (statusValue == successCode) {
         _empty.hidden=YES;
        NSArray* projectInfo = [dic objectForKey:@"projectInfo"];
        NSArray* datas = [JsonFactory creatJsonDataArray:projectInfo class:[ProjectData class]];

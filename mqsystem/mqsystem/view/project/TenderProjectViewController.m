@@ -39,43 +39,11 @@
     [super viewDidLoad];
     UIBarButtonItem *backButton = [ViewUtil genTopLeftButtonItemWithImage:@"com_icon_return_img" target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem=backButton;
-    
-    
-    _tableView.separatorStyle = NO;
-    //_tableView.rowHeight=UITableViewAutomaticDimension;
     self.automaticallyAdjustsScrollViewInsets=NO;
-    
-    
+    _tableView.separatorStyle = NO;
+    _tableView.estimatedRowHeight = 60.f;
     projectDatas = [[NSMutableArray alloc]init];
-    
-    
-//    ProjectData *data1 = [ProjectData new];
-//    data1.title=@" 房屋建筑";
-//    data1.endTime=@"  截止时间：2015-01-20 16:40";
-//    data1.moneType=@"  人民币";
-//    data1.serialNumber=@"  137198318361";
-//    
-//    
-//    ProjectData *data2 = [ProjectData new];
-//    
-//    data2.title=@" 房屋建筑";
-//    data2.endTime=@"  截止时间：2015-01-20 16:40";
-//    data2.moneType=@"  人民币";
-//    data2.serialNumber=@"  137198318361";
-//    ProjectData *data3 = [ProjectData new];
-//    
-//    data3.title=@" 房屋建筑";
-//    data3.endTime=@"  截止时间：2015-01-20 16:40";
-//    data3.moneType=@"  人民币";
-//    data3.serialNumber=@"  137198318361";
-//    
-//    [projectDatas addObject:data1];
-//    [projectDatas addObject:data2];
-//    [projectDatas addObject:data3];
-    
-    
-    
-    
+
     UserInfo *userInfo = [AppDelegate getAppContext:@"UserInfo"];
     HttpEvent *bindEvent = [HttpEvent new];
     bindEvent.actionUrl= bindproject;

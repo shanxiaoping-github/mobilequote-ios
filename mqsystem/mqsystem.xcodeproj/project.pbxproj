@@ -641,7 +641,7 @@
 				TargetAttributes = {
 					5CC5ADC81A46CD6500DF4156 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = CJWC8AULG7;
+						DevelopmentTeam = 9SUS6U669H;
 					};
 					5CC5ADE11A46CD6600DF4156 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -873,7 +873,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos8.3;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -889,7 +889,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos8.3;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

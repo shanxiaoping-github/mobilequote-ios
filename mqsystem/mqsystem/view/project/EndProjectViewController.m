@@ -50,6 +50,7 @@
     
     
     _tableView.separatorStyle = NO;
+    _tableView.estimatedRowHeight = 60.f;
     //_tableView.rowHeight=UITableViewAutomaticDimension;
     self.automaticallyAdjustsScrollViewInsets=NO;
     

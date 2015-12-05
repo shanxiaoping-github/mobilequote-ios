@@ -124,6 +124,7 @@
     
     /*列表初始*/
     _tableView.separatorStyle = NO;
+    _tableView.estimatedRowHeight  = 60.f;
     self.automaticallyAdjustsScrollViewInsets=NO;
     
     
@@ -288,7 +289,8 @@
 /*拒绝*/
 -(void)refundAction{
     NSLog(@"refund");
-    if (_projectData.isCurrentQuote) {
+    if (_projectData.isCurrentQuote){
+        [MBProgressHUDManager showMessage:@"项目价格已确定,无法操作" view: self.view];
         return;
     }
     NSDate* endDate = [TimeUtil stringToNsData:[_projectData endTime] format:DATA1];
@@ -312,6 +314,7 @@
 -(void)askModificationAction{
     NSLog(@"askNodification");
     if (_projectData.isCurrentQuote&&[_projectData.currentNumber intValue]!=1) {
+       [MBProgressHUDManager showMessage:@"项目价格已确定,无法操作" view: self.view];
         return;
     }
     NSDate* endDate = [TimeUtil stringToNsData:[_projectData endTime] format:DATA1];
@@ -335,7 +338,8 @@
 /*询价处理*/
 -(void)askAction{
     NSLog(@"ask");
-    if (_projectData.isCurrentQuote&&[_projectData.currentNumber intValue]!=1) {
+    if (_projectData.isCurrentQuote&&[_projectData.currentNumber intValue]!=1){
+        [MBProgressHUDManager showMessage:@"项目价格已确定,无法操作" view: self.view];
         return;
     }
     
@@ -347,7 +351,7 @@
         return;
     }
     
-    if ([self isChange] == NO) {
+    if ([self isChange] == NO){
         [MBProgressHUDManager showMessage:@"未发现有产品报价变动" view: self.view];
         return;
     }
@@ -369,6 +373,7 @@
 /*报价处理*/
 -(void)quoteAction{
     if ([_projectData isCurrentQuote]&&[_projectData.currentNumber intValue] > 1) {
+        [MBProgressHUDManager showMessage:@"项目价格已确定,无法操作" view: self.view];
         return;
     }
     
@@ -544,8 +549,7 @@
     productCell.currentPrice.text = [@" 当前报价:" stringByAppendingString:[MathUtil numberToString:product.currentPrice]];
     
     UITapGestureRecognizer* changePrice =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(changePrice:)];
-    changePrice.view.tag = indexPath.row;
-   
+    productCell.currentPrice.tag = indexPath.row;
     
     
     productCell.currentPrice.userInteractionEnabled=YES;
@@ -658,7 +662,7 @@
             [MBProgressHUDManager showMessage:@"修改失败" view:self.view];
             
         }else{
-            _projectData.isCurrentQuote=YES;
+            _projectData.isCurrentQuote = YES;
             [MBProgressHUDManager showMessage:@"修改成功" view:self.view];
         }
     }else if ([getType isEqualToString:GET_ASK_REFUND]){//询价拒绝

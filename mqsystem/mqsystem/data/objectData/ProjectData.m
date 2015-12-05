@@ -17,6 +17,16 @@
 @synthesize isCurrentQuote=_isCurrentQuote;
 @synthesize currentNumber=_currentNumber;
 @synthesize rate=_rate;
+
+//currentNumber = 1;
+//endTime = "2015-03-31 17:22:34";
+//isCurrentQuote = 0;
+//moneyType = "\U4eba\U6c11\U5e01";
+//name = "5\U4f4d\U5c0f\U6570\U6d4b\U8bd5";
+//rate = 17;
+//serialNumber = "PUR-C20150331001";
+//type = 2;
+
 -(void)parse:(NSDictionary *)object{
 
     self.type = [object objectForKey:@"type"];

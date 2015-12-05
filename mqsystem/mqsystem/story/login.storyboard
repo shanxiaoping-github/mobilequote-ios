@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="k1R-c5-nFm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="k1R-c5-nFm">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -359,7 +359,7 @@
                                             <constraint firstAttribute="height" constant="21" id="ITe-PV-hXD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2s-Dx-p76">
@@ -377,7 +377,7 @@
                                             <constraint firstAttribute="height" constant="21" id="IJD-c0-odt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJL-Es-h4f">
@@ -395,7 +395,7 @@
                                             <constraint firstAttribute="height" constant="21" id="DKn-gz-nEi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="12%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mY-eR-9ad">
@@ -404,7 +404,7 @@
                                             <constraint firstAttribute="height" constant="21" id="cUc-6o-5o8"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="第一轮" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko7-CG-JsF">
@@ -413,7 +413,7 @@
                                             <constraint firstAttribute="height" constant="21" id="wWA-Np-2bG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxI-hR-a72">
@@ -514,12 +514,16 @@
                                             <constraint firstAttribute="height" constant="21" id="Ufv-HU-ThJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="报价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNJ-rQ-QjG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNJ-rQ-QjG">
                                         <rect key="frame" x="250" y="38" width="68" height="35"/>
                                         <color key="backgroundColor" red="0.48745764359999999" green="0.75386332280000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="68" id="JPn-ZR-raI"/>
+                                            <constraint firstAttribute="height" constant="35" id="UiA-tM-Qij"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -555,6 +559,7 @@
                                     <constraint firstItem="451-yh-n6k" firstAttribute="top" secondItem="Fmd-sF-r6g" secondAttribute="top" id="55M-cB-a4s"/>
                                     <constraint firstItem="eeR-fu-qQy" firstAttribute="top" secondItem="aCn-3d-4jP" secondAttribute="bottom" constant="8" id="9Jk-EO-1fS"/>
                                     <constraint firstItem="3nt-uf-cz1" firstAttribute="top" secondItem="aCn-3d-4jP" secondAttribute="top" constant="-1" id="G4A-32-MjD"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZNJ-rQ-QjG" secondAttribute="bottom" constant="1" id="Jsd-yC-0a4"/>
                                     <constraint firstAttribute="trailing" secondItem="eeR-fu-qQy" secondAttribute="trailing" constant="9" id="MXM-6G-j9t"/>
                                     <constraint firstItem="eeR-fu-qQy" firstAttribute="top" secondItem="cDh-OJ-aQY" secondAttribute="top" id="Nn2-DN-Hje"/>
                                     <constraint firstItem="eeR-fu-qQy" firstAttribute="leading" secondItem="cDh-OJ-aQY" secondAttribute="trailing" constant="3" id="UZH-Hb-fl9"/>
@@ -562,6 +567,7 @@
                                     <constraint firstAttribute="trailing" secondItem="aCn-3d-4jP" secondAttribute="trailing" constant="9" id="aYU-cv-Krh"/>
                                     <constraint firstItem="dMG-lL-mga" firstAttribute="leading" secondItem="Fmd-sF-r6g" secondAttribute="leading" id="dbj-4k-7ym"/>
                                     <constraint firstItem="qpn-wO-gwW" firstAttribute="leading" secondItem="dMG-lL-mga" secondAttribute="trailing" constant="-3" id="dcs-Gn-iiJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZNJ-rQ-QjG" secondAttribute="trailing" constant="2" id="eDd-lR-fkv"/>
                                     <constraint firstItem="2o1-yI-aKB" firstAttribute="leading" secondItem="Fmd-sF-r6g" secondAttribute="leading" id="epw-XD-9cy"/>
                                     <constraint firstItem="2o1-yI-aKB" firstAttribute="top" secondItem="3nt-uf-cz1" secondAttribute="top" id="hWs-1d-zel"/>
                                     <constraint firstItem="451-yh-n6k" firstAttribute="leading" secondItem="Fmd-sF-r6g" secondAttribute="trailing" constant="8" id="jSZ-q4-u3b"/>
@@ -967,11 +973,6 @@
         <image name="com_button_blue_img.png" width="320" height="43"/>
         <image name="list_2_line_img.png" width="302" height="90"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="QVk-J6-uKP"/>
     </inferredMetricsTieBreakers>
