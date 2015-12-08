@@ -14,6 +14,7 @@
 		5C0A666F1A750CA400088494 /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0A666D1A750CA400088494 /* ProductTableViewCell.xib */; };
 		5C16A0291A470D09007DE04B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C16A0281A470D09007DE04B /* Default-568h@2x.png */; };
 		5C1F15741A7517E900D2DC2C /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1F15731A7517E900D2DC2C /* Product.m */; };
+		5C32CECE1C16B40600DC6A2F /* libChuaiGuo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C32CECD1C16B40600DC6A2F /* libChuaiGuo.a */; };
 		5C463F091A46FF5200015AF3 /* com_button_blue_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C463F081A46FF5200015AF3 /* com_button_blue_img.png */; };
 		5C463F0B1A47000900015AF3 /* list_2_line_img.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C463F0A1A47000900015AF3 /* list_2_line_img.png */; };
 		5C64DD4D1A4E726B00A3E304 /* StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C64DD4C1A4E726B00A3E304 /* StringUtil.m */; };
@@ -105,6 +106,8 @@
 		5C16A0281A470D09007DE04B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5C1F15721A7517E900D2DC2C /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		5C1F15731A7517E900D2DC2C /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		5C32CECC1C16B40600DC6A2F /* ChuaiGuo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuaiGuo.h; sourceTree = "<group>"; };
+		5C32CECD1C16B40600DC6A2F /* libChuaiGuo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libChuaiGuo.a; sourceTree = "<group>"; };
 		5C463EFA1A46FC4E00015AF3 /* StoryMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryMacros.h; sourceTree = "<group>"; };
 		5C463F081A46FF5200015AF3 /* com_button_blue_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = com_button_blue_img.png; sourceTree = "<group>"; };
 		5C463F0A1A47000900015AF3 /* list_2_line_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_2_line_img.png; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C32CECE1C16B40600DC6A2F /* libChuaiGuo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +523,8 @@
 		5CC5ADC01A46CD6500DF4156 = {
 			isa = PBXGroup;
 			children = (
+				5C32CECC1C16B40600DC6A2F /* ChuaiGuo.h */,
+				5C32CECD1C16B40600DC6A2F /* libChuaiGuo.a */,
 				5C7C7E301A7E020C00E390B1 /* HubProgress */,
 				5C7C7E081A7CA98100E390B1 /* Networking Extensions */,
 				5C7C7DD01A7CA94800E390B1 /* Vendor */,
@@ -641,7 +647,7 @@
 				TargetAttributes = {
 					5CC5ADC81A46CD6500DF4156 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 9SUS6U669H;
+						DevelopmentTeam = U6Y7DQU74W;
 					};
 					5CC5ADE11A46CD6600DF4156 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -803,6 +809,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -844,6 +851,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -864,15 +872,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hunan Baolun Tiandi Information Technology Co., Ltd. (U6Y7DQU74W)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Hunan Baolun Tiandi Information Technology Co., Ltd. (U6Y7DQU74W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hunan Baolun Tiandi Information Technology Co., Ltd. (U6Y7DQU74W)";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mqsystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = shanghai.yicai.mqsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d7914a0c-b1d5-4d26-b703-46380264fa4f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -882,13 +896,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hunan Baolun Tiandi Information Technology Co., Ltd. (U6Y7DQU74W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hunan Baolun Tiandi Information Technology Co., Ltd. (U6Y7DQU74W)";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mqsystem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = shanghai.yicai.mqsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d7914a0c-b1d5-4d26-b703-46380264fa4f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -898,6 +918,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -917,6 +938,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

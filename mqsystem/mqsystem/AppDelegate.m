@@ -11,6 +11,8 @@
 #import "StoryMacros.h"
 #import "JSONKit.h"
 #import "StringUtil.h"
+#import "ChuaiGuo.h"
+#import <Foundation/Foundation.h>
 AppDelegate *instance=nil;
 NSMutableDictionary *applacationContext=nil;
 
@@ -19,12 +21,20 @@ NSMutableDictionary *applacationContext=nil;
     NSMutableDictionary *applacationContext;
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
- 
-    
     instance = self;
     [self initWindow];
     [AppDelegate startStory:story_login];
-    return YES;
+    @try {
+        NSString* token = @"0992688b248554a29db7cc236c27d826";
+        [ChuaiGuo Begin:token];
+    }
+    @catch (NSException *exception) {
+        return YES;
+    }
+    @finally {
+        return YES;
+    }
+  
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
