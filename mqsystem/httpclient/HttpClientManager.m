@@ -1,20 +1,15 @@
 //
 //  HttpClientManager.m
 //  mqsystem
-//
 //  Created by shanxiaoping on 15-1-31.
 //  Copyright (c) 2015年 yicai. All rights reserved.
 //
-
 #import "HttpClientManager.h"
 #import "HttpEvent.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "HttpAddress.h"
-
-
-
 @implementation HttpClientManager
-@synthesize event=_event;
+@synthesize event =_event;
 /*获取单例*/
 +(instancetype)sharedClient{
     static HttpClientManager *instance;
@@ -22,9 +17,6 @@
     dispatch_once(&onceToken, ^{
         instance = [HttpClientManager new];
     });
-    
-    
-    
     return instance;
 }
 /*获得地址*/
@@ -33,17 +25,19 @@
 }
 /*提交请求*/
 -(void)submitHttpEvent{
-
-    
-    if (_event) {
-        AFHTTPRequestOperationManager  *afhManager = [AFHTTPRequestOperationManager manager];
+    if(_event) {
+        AFHTTPRequestOperationManager *afhManager = [AFHTTPRequestOperationManager manager];
+        //afhManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        //NSMutableSet *contentTypes = [[NSMutableSet alloc] initWithSet:afhManager.responseSerializer.acceptableContentTypes];
+        //[contentTypes addObject:@"text/html"];
+        //afhManager.responseSerializer.acceptableContentTypes = contentTypes;
+        //afhManager.requestSerializer=[AFJSONRequestSerializer serializer];
         [afhManager GET:[HttpClientManager getUrl:_event.actionUrl] parameters:_event.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [_event.callBack success:operation response:responseObject];
-            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error){
             [_event.callBack error:operation error:error];
         }];
-        
     }
 }
+
 @end

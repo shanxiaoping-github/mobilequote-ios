@@ -9,17 +9,11 @@
 #import "ProductTableViewCell.h"
 
 @implementation ProductTableViewCell
-
 @synthesize productName=_productName;
 @synthesize unit=_unit;
 @synthesize productNumber=_productNumber;
-@synthesize productsRule=_productsRule;
 @synthesize currentPrice=_currentPrice;
 @synthesize currentTotal=_currentTotal;
-@synthesize lastPrice=_lastPrice;
-@synthesize lastTotal=_lastTotal;
-@synthesize currentRanking=_currentRanking;
-@synthesize lastRanking=_lastRanking;
 
 - (void)awakeFromNib {
     // Initialization code

@@ -16,6 +16,4 @@
 +(instancetype) sharedClient;
 /*提交httpEven事件*/
 -(void)submitHttpEvent;
-
-
 @end

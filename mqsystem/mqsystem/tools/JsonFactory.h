@@ -7,24 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@protocol JsonData <NSObject>
-@required
--(void)parse:(NSDictionary*) object;
-@optional
--(NSDictionary*)page;
-
-@end
-
+#import "MJExtension.h"
 @interface JsonFactory : NSObject
-
-+(NSArray*)creatJsonDataArray:(NSString*)jsonStr className:(Class)className;
-+(NSArray*)creatJsonDataArray:(NSArray*)jsonArray class:(Class)className;
-
+//根据字符串创建jsonData数组
++(NSArray*)creatJsonDataArrayByStr:(NSString*)jsonStr class:(Class)className;
+//根据字符串创建jsonData字典数组
++(NSArray*)creatJsonDataArrayByStr:(NSString*)jsonStr;
+//根据数组创建jsonData数组
++(NSArray*)creatJsonDataArrayByArray:(NSArray*)jsonArray class:(Class)className;
+//根据字符串创建jsonData字典
 +(NSDictionary*)creatJsonDataItem:(NSString*)jsonStr;
-+(id<JsonData>)creatJsonDataItem:(NSString*)jsonStr className:(Class)className;
-+(id<JsonData>)creatJsonDataItem:(NSDictionary*)jsonItem class:(Class)className;
-
-+(NSString*)pageJsonDataItem:(id<JsonData>)dataItem;
-+(NSString*)pageJsonDataArry:(NSArray*)datas;
+//根据字符串创建jsonData
++(id)creatJsonDataItemByStr:(NSString*)jsonStr class:(Class)className;
+//根据字典创建jsonData
++(id)creatJsonDataItemByDic:(NSDictionary*)jsonItem class:(Class)className;
 @end

@@ -7,22 +7,15 @@
 //
 /*报价产品*/
 #import "QuoteProduct.h"
-
 @implementation QuoteProduct
 @synthesize serialNumber=_serialNumber;
 @synthesize price=_price;
 @synthesize rate=_rate;
-
--(void)parse:(NSDictionary *)object{
-
-}
 -(NSDictionary *)page{
     NSMutableDictionary* dic = [NSMutableDictionary dictionary];
     [dic setValue:_serialNumber forKey:@"serialNumber"];
     [dic setValue:_price forKey:@"price"];
     [dic setValue:_rate forKey:@"rate"];
     return dic;
-    
 }
-
 @end

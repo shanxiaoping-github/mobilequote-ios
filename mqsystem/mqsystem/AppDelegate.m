@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "StoryContants.h"
 #import "StoryMacros.h"
-#import "JSONKit.h"
 #import "StringUtil.h"
 #import "ChuaiGuo.h"
 #import <Foundation/Foundation.h>
@@ -24,6 +23,8 @@ NSMutableDictionary *applacationContext=nil;
     instance = self;
     [self initWindow];
     [AppDelegate startStory:story_login];
+    
+    
     @try {
         NSString* token = @"0992688b248554a29db7cc236c27d826";
         [ChuaiGuo Begin:token];
@@ -34,7 +35,7 @@ NSMutableDictionary *applacationContext=nil;
     @finally {
         return YES;
     }
-  
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

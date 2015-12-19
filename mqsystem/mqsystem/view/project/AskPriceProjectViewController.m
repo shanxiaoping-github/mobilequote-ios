@@ -130,7 +130,7 @@
     projectCell.title.text = [@" " stringByAppendingString:data.title];
     projectCell.endTime.text = [@" 截止时间:" stringByAppendingString:data.endTime];
     projectCell.projectNumber.text =[@" 项目编号:" stringByAppendingString:data.serialNumber];
-    projectCell.moneyType.text=[@" 币种:" stringByAppendingString:data.moneType];
+    projectCell.moneyType.text=[@" 币种:" stringByAppendingString:data.moneType?data.moneType:@"人民币"];
     return  projectCell;
     
 
@@ -155,20 +155,17 @@
 }
 -(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
     [hud hide:YES];
-    NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
-    NSNumber* status=[dic objectForKey:@"status"];
-    int statusValue = [status intValue];
-    if (statusValue == successCode) {
+    NSNumber* stautsNumber = responseObject[@"status"];
+    NSString* status = [stautsNumber stringValue];
+    if([status isEqualToString:@"0"]) {
         _empty.hidden=YES;
-       NSArray* projectInfo = [dic objectForKey:@"projectInfo"];
-       NSArray* datas = [JsonFactory creatJsonDataArray:projectInfo class:[ProjectData class]];
-        [projectDatas addObjectsFromArray:datas];
+        NSArray* projectArray = [JsonFactory creatJsonDataArrayByArray:responseObject[@"projectInfo"] class:[ProjectData class]];
+        [projectDatas addObjectsFromArray:projectArray];
         [_tableView reloadData];
     }else{
         _empty.hidden=NO;
         _empty.text=@"暂无项目";
     }
-    
 }
 -(void)error:(AFHTTPRequestOperation *)operation error:(NSError *)error{
     [hud hide:YES];

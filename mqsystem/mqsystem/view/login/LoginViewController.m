@@ -24,9 +24,7 @@
 @interface LoginViewController ()<HttpCallBack>{
     MBProgressHUD* hud;
 }
-
 @end
-
 @implementation LoginViewController
 @synthesize userNameTextfield=_userNameTextfield;
 @synthesize passWordTextfield=_passWordTextfield;
@@ -34,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    
     _userNameTextfield.returnKeyType=UIReturnKeyDone;
     _passWordTextfield.returnKeyType=UIReturnKeyDone;
     _passWordTextfield.secureTextEntry=YES;
@@ -66,8 +66,7 @@
         [ShowUtil showAlert:@"输入提示" message:@"请输入密码"];
         return;
     }
-    
-     //登录
+    //登录
     HttpEvent *loginEvent =[HttpEvent new];
     loginEvent.actionUrl=login;
     [loginEvent addPrama:userNameStr key:@"userName"];
@@ -77,22 +76,16 @@
     httpClient.event = loginEvent;
     hud = [MBProgressHUDManager showLoad:@"登录中..." view:self.view];
     [httpClient submitHttpEvent];
-    
-    
-    
 }
 -(void)success:(AFHTTPRequestOperation *)operation response:(id)responseObject{
     [hud hide:YES];
-    NSDictionary* result=[JsonFactory creatJsonDataItem:operation.responseString];
-    NSNumber *status=[result objectForKey:@"status"];
-    int statusValue = [status intValue];
-    if (statusValue == login_success) {
-        NSDictionary* userItem = [result objectForKey:@"userInfo"];
-        UserInfo* userInfo=[JsonFactory creatJsonDataItem:userItem class:[UserInfo class]];
+    NSNumber* statusNumber = responseObject[@"status"];
+    NSString* status = [statusNumber stringValue];
+    if ([status isEqualToString:@"0"]) {
+        UserInfo* userInfo = [JsonFactory creatJsonDataItemByDic:responseObject[@"userInfo"] class:[UserInfo class]];
         [AppDelegate addAppContext:userInfo];
-        
         [self performSegueWithIdentifier:story_home_step sender:nil];
-    }else if(statusValue == login_did){
+    }else if([status isEqualToString:@"1"]){
         [MBProgressHUDManager showMessage:@"已登录" view:self.view];
     }else{
         [MBProgressHUDManager showMessage:@"用户名和密码错误" view:self.view];

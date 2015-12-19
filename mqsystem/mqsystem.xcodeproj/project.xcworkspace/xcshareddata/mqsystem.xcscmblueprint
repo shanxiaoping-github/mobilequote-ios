@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1601C202CE41F920CD8FA7430BFABAE72826690B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "06AC9AAA8E8FB2CF247893191A03602CA92398B3" : 0,
+    "1601C202CE41F920CD8FA7430BFABAE72826690B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0264AFBA-CB8C-422B-958C-11E6EEAAAD64",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "06AC9AAA8E8FB2CF247893191A03602CA92398B3" : "gigold_develop\/cashier\/",
+    "1601C202CE41F920CD8FA7430BFABAE72826690B" : "mobilequote-ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "mqsystem",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "mqsystem\/mqsystem.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shanxiaoping-github\/cashier.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "06AC9AAA8E8FB2CF247893191A03602CA92398B3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shanxiaoping-github\/mobilequote-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1601C202CE41F920CD8FA7430BFABAE72826690B"
+    }
+  ]
+}

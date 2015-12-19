@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JsonFactory.h"
-
-
-@interface ProjectData : NSObject<JsonData>
-
+@interface ProjectData : NSObject
 /*标题*/
 @property(strong,nonatomic)NSString* title;
 /*截止时间*/
@@ -21,11 +18,11 @@
 /*序列号*/
 @property(strong,nonatomic)NSString* serialNumber;
 /*项目类型*/
-@property(nonatomic)NSNumber* type;
+@property(nonatomic,strong)NSString* type;
 /*是否已经报价*/
-@property(nonatomic)BOOL isCurrentQuote;
+@property(nonatomic,assign)BOOL isCurrentQuote;
 /*当前报价次数*/
-@property(nonatomic,strong)NSNumber* currentNumber;
+@property(nonatomic,strong)NSString* currentNumber;
 /*税率*/
-@property(nonatomic,strong)NSNumber* rate;
+@property(nonatomic,strong)NSString* rate;
 @end

@@ -5,61 +5,34 @@
 //  Created by shanxiaoping on 14-12-8.
 //  Copyright (c) 2014年 cpz. All rights reserved.
 //
-
 #import "JsonFactory.h"
-#import "JSONKit.h"
 @implementation JsonFactory
-
-+(NSArray *)creatJsonDataArray:(NSString *)jsonStr className:(Class)className{
-    
-    
-    NSArray* jsonList = [jsonStr objectFromJSONString];
-    return [JsonFactory creatJsonDataArray:jsonList class:className];
++(NSArray *)creatJsonDataArrayByStr:(NSString *)jsonStr class:(Class)className{
+    NSArray* jsonDataArray = [JsonFactory creatJsonDataArrayByStr:jsonStr];
+    return [JsonFactory creatJsonDataArrayByArray:jsonDataArray class:className];
 }
-+(NSArray *)creatJsonDataArray:(NSArray *)jsonArray class:(Class)className{
-    NSMutableArray *list = [NSMutableArray new];
-
-    for(int i=0;i<[jsonArray count];i++) {
-        NSDictionary *item = [jsonArray objectAtIndex:i];
-        id<JsonData> jsonObj =  [className new];
-        [jsonObj parse:item];
-        [list addObject:jsonObj];
-        
-    }
-    return list;
-
-}
-
-+(NSDictionary *)creatJsonDataItem:(NSString *)jsonStr{
++(NSArray *)creatJsonDataArrayByStr:(NSString *)jsonStr{
     NSData* jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *item = [jsonData objectFromJSONData];
+    NSArray* jsonArray = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+    return jsonArray;
+}
++(NSArray *)creatJsonDataArrayByArray:(NSArray *)jsonArray class:(Class)className{
+   return [className objectArrayWithKeyValuesArray:jsonArray];
+}
+
++(NSDictionary *)creatJsonDataItem:(NSString*)jsonStr{
+    NSData* jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *item = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
     return item;
 }
-+(id<JsonData>)creatJsonDataItem:(NSString *)jsonStr className:(Class)className{
-     NSDictionary* item = [JsonFactory creatJsonDataItem:jsonStr];
-    id<JsonData> jsonObj = [className new];
-    [jsonObj parse:item];
-    return jsonObj;
 
++(id)creatJsonDataItemByStr:(NSString *)jsonStr class:(Class)className{
+    NSDictionary* item = [JsonFactory creatJsonDataItem:jsonStr];
+    return [JsonFactory creatJsonDataItemByDic:item class:className];
 }
-+(id<JsonData>)creatJsonDataItem:(NSDictionary *)jsonItem class:(Class)className{
-    id<JsonData> jsonObj = [className new];
-    [jsonObj parse:jsonItem];
-    return jsonObj;
++(id)creatJsonDataItemByDic:(NSDictionary *)jsonItem class:(Class)className{
+    return [className objectWithKeyValues:jsonItem];
 }
-+(NSString*)pageJsonDataItem:(id<JsonData>)dataItem{
-    NSDictionary* jsonItemDictionary = [dataItem page];
-    NSString* jsonStr = [jsonItemDictionary JSONString];
-    return jsonStr;
 
-}
-+(NSString *)pageJsonDataArry:(NSArray *)datas{
-    NSMutableArray* resultArray = [[NSMutableArray alloc]init];
-    for (int i = 0;i < [datas count]; i++) {
-        id<JsonData> item = [datas objectAtIndex:i];
-        NSDictionary* itemDictionary = [item page];
-        [resultArray addObject:itemDictionary];
-    }
-    return  [resultArray JSONString];
-}
+
 @end

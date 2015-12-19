@@ -7,16 +7,13 @@
 //
 
 #import "UserInfo.h"
-
+#import "MJExtension.h"
 @implementation UserInfo
 @synthesize idStr=_idStr;
 @synthesize userName=_userName;
 @synthesize realName=_realName;
-
--(void)parse:(NSDictionary *)object{
-    NSNumber* userid = [object objectForKey:@"id"];
-    self.idStr = [userid stringValue];
-    self.userName=[object objectForKey:@"userName"];
-    self.realName=[object objectForKey:@"realName"];
++(NSDictionary *)replacedKeyFromPropertyName{
+    return @{@"idStr":@"id"};
 }
+
 @end

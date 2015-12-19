@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JsonFactory.h"
 /*用户信息*/
-@interface UserInfo : NSObject<JsonData>
+@interface UserInfo : NSObject
 @property(nonatomic,strong)NSString* idStr;
 @property(nonatomic,strong)NSString* userName;
 @property(nonatomic,strong)NSString* realName;

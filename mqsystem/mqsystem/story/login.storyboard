@@ -350,7 +350,7 @@
                                     <outlet property="delegate" destination="cB0-xY-gtZ" id="TKj-zf-hek"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1j-ey-aTU">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1j-ey-aTU">
                                 <rect key="frame" x="0.0" y="494" width="320" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前报价 :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUK-l9-fbY">
@@ -418,7 +418,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxI-hR-a72">
                                         <rect key="frame" x="244" y="37" width="68" height="35"/>
-                                        <color key="backgroundColor" red="0.48745764359999999" green="0.75386332280000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="8V4-hr-qHO"/>
                                             <constraint firstAttribute="width" constant="68" id="jsQ-g0-n9o"/>
@@ -451,7 +451,7 @@
                                     <constraint firstItem="c2s-Dx-p76" firstAttribute="leading" secondItem="nUK-l9-fbY" secondAttribute="trailing" constant="8" id="wf8-7N-NXt"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kx6-tS-E4w">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kx6-tS-E4w">
                                 <rect key="frame" x="0.0" y="494" width="320" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="当前报价 :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o1-yI-aKB">
@@ -519,7 +519,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="报价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNJ-rQ-QjG">
                                         <rect key="frame" x="250" y="38" width="68" height="35"/>
-                                        <color key="backgroundColor" red="0.48745764359999999" green="0.75386332280000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="68" id="JPn-ZR-raI"/>
                                             <constraint firstAttribute="height" constant="35" id="UiA-tM-Qij"/>
@@ -530,7 +530,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拒绝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDh-OJ-aQY">
                                         <rect key="frame" x="188" y="38" width="59" height="31"/>
-                                        <color key="backgroundColor" red="0.48745764359999999" green="0.75386332280000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="LD2-3e-lMg"/>
                                             <constraint firstAttribute="width" constant="59" id="TvR-qy-eeq"/>
@@ -541,7 +541,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="修改" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeR-fu-qQy">
                                         <rect key="frame" x="250" y="38" width="61" height="31"/>
-                                        <color key="backgroundColor" red="0.48745764359999999" green="0.75386332280000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="8gL-9Q-6cH"/>
                                             <constraint firstAttribute="width" constant="61" id="P3P-8N-46b"/>

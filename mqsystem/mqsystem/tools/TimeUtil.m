@@ -33,7 +33,7 @@
 +(NSInteger)compareData:(NSDate *)data1 toData:(NSDate *)data2{
     if ([data1 isEqualToDate:data2]){
         return 0;
-    }else if([data1 earlierDate:data2]==data1){
+    }else if([data1 earlierDate:data2] == data1){
         return -1;
         
     }else{

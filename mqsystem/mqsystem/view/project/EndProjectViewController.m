@@ -53,44 +53,9 @@
     _tableView.estimatedRowHeight = 60.f;
     //_tableView.rowHeight=UITableViewAutomaticDimension;
     self.automaticallyAdjustsScrollViewInsets=NO;
-    
-    
-    
-   
-    
-    
     projectDatas = [[NSMutableArray alloc]init];
     index=0;
     [self getProject:0];
-    
-    
-    
-//    ProjectData *data1 = [ProjectData new];
-//    data1.title=@" 房屋建筑";
-//    data1.endTime=@"  截止时间：2015-01-20 16:40";
-//    data1.moneType=@"  人民币";
-//    data1.serialNumber=@"  137198318361";
-//    
-//    
-//    ProjectData *data2 = [ProjectData new];
-//    
-//    data2.title=@" 房屋建筑";
-//    data2.endTime=@"  截止时间：2015-01-20 16:40";
-//    data2.moneType=@"  人民币";
-//    data2.serialNumber=@"  137198318361";
-//    ProjectData *data3 = [ProjectData new];
-//    
-//    data3.title=@" 房屋建筑";
-//    data3.endTime=@"  截止时间：2015-01-20 16:40";
-//    data3.moneType=@"  人民币";
-//    data3.serialNumber=@"  137198318361";
-//    
-//    [projectDatas addObject:data1];
-//    [projectDatas addObject:data2];
-//    [projectDatas addObject:data3];
-    
-
-
     // Do any additional setup after loading the view.
 }
 
@@ -133,7 +98,7 @@
     projectCell.title.text = [@" " stringByAppendingString:data.title];
     projectCell.endTime.text = [@" 截止时间:" stringByAppendingString:data.endTime];
     projectCell.projectNumber.text =[@" 项目编号:" stringByAppendingString:data.serialNumber];
-    projectCell.moneyType.text=[@" 币种:" stringByAppendingString:data.moneType];
+    projectCell.moneyType.text=[@" 币种:" stringByAppendingString:data.moneType?data.moneType:@"人民币"];
     return  projectCell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -200,7 +165,7 @@
     if (statusValue==successCode) {
         _empty.hidden=YES;
         NSArray* projectInfo = [dic objectForKey:@"projectInfo"];
-        NSArray* datas = [JsonFactory creatJsonDataArray:projectInfo class:[ProjectData class]];
+        NSArray* datas = [JsonFactory creatJsonDataArrayByArray:responseObject[@"projectInfo"] class:[ProjectData class]];
         [projectDatas addObjectsFromArray:datas];
         [_tableView reloadData];
     }else{

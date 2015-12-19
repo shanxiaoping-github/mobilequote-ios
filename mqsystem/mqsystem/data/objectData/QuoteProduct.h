@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "JsonFactory.h"
-
-@interface QuoteProduct : NSObject<JsonData>
+@interface QuoteProduct : NSObject
 /*序列号*/
 @property(nonatomic,strong)NSString* serialNumber;
 /*当前单价*/
-@property(nonatomic,strong)NSNumber* price;
+@property(nonatomic,strong)NSString* price;
 /*产品税率*/
-@property(nonatomic,strong)NSNumber* rate;
-
+@property(nonatomic,strong)NSString* rate;
+-(NSDictionary *)page;
 @end
