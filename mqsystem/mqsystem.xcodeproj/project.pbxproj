@@ -973,7 +973,7 @@
 				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = shanghai.yicai.mqsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d7914a0c-b1d5-4d26-b703-46380264fa4f";
+				PROVISIONING_PROFILE = "416cd25b-2e0e-4f23-9a5b-eb283e74a8a9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -996,7 +996,7 @@
 				OTHER_LDFLAGS = "-Objc";
 				PRODUCT_BUNDLE_IDENTIFIER = shanghai.yicai.mqsystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d7914a0c-b1d5-4d26-b703-46380264fa4f";
+				PROVISIONING_PROFILE = "416cd25b-2e0e-4f23-9a5b-eb283e74a8a9";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

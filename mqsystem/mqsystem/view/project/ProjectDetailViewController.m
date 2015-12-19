@@ -294,7 +294,7 @@
 -(void)askAction{
     NSLog(@"ask");
     if (_projectData.isCurrentQuote&&[_projectData.currentNumber intValue]!=1){
-        [MBProgressHUDManager showMessage:@"项目价格已确定,无法操作" view: self.view];
+        [MBProgressHUDManager showMessage:@"本轮报价已结束,无法操作" view: self.view];
         return;
     }
     
@@ -326,7 +326,7 @@
 /*报价处理*/
 -(void)quoteAction{
     if ([_projectData isCurrentQuote]&&[_projectData.currentNumber intValue] > 1) {
-        [MBProgressHUDManager showMessage:@"项目价格已确定,无法操作" view: self.view];
+        [MBProgressHUDManager showMessage:@"本轮报价已结束,无法操作" view: self.view];
         return;
     }
     
@@ -651,10 +651,13 @@
 
 /*修改当前报价*/
 -(void)changeDispose:(NSString*)changePrice{
+    
     if (![MathUtil isNumber:changePrice lastNumber:6]){
         [MBProgressHUDManager showMessage:@"请输入合法的数值" view:self.view];
     }else{
         currentProduct.currentPrice = changePrice;
+        _currentPrice.text = [self totalPrice:0];
+        _currentPrice1.text = [self totalPrice:0];
         [_tableView reloadData];
     }
 }

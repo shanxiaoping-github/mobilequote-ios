@@ -28,9 +28,9 @@
     if(_event) {
         AFHTTPRequestOperationManager *afhManager = [AFHTTPRequestOperationManager manager];
         //afhManager.responseSerializer = [AFJSONResponseSerializer serializer];
-        //NSMutableSet *contentTypes = [[NSMutableSet alloc] initWithSet:afhManager.responseSerializer.acceptableContentTypes];
-        //[contentTypes addObject:@"text/html"];
-        //afhManager.responseSerializer.acceptableContentTypes = contentTypes;
+        NSMutableSet *contentTypes = [[NSMutableSet alloc] initWithSet:afhManager.responseSerializer.acceptableContentTypes];
+        [contentTypes addObject:@"text/html"];
+        afhManager.responseSerializer.acceptableContentTypes = contentTypes;
         //afhManager.requestSerializer=[AFJSONRequestSerializer serializer];
         [afhManager GET:[HttpClientManager getUrl:_event.actionUrl] parameters:_event.param success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [_event.callBack success:operation response:responseObject];
