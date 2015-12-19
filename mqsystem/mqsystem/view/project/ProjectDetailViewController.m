@@ -463,7 +463,7 @@
         quoteProduct.serialNumber = product.serialNumber;
         quoteProduct.price = product.currentPrice;
         quoteProduct.rate = product.rate;
-        [quoteProducts addObject:[quoteProduct JSONString]];
+        [quoteProducts addObject:[quoteProduct page]];
     }
     return quoteProducts;
     
@@ -572,18 +572,21 @@
          _empty.text=@"暂无产品";
        }
     }else if([getType isEqualToString:GET_BIDDING_QUOTE]){//报价
-        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
-        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSNumber* statusNumber = responseObject[@"status"];
         NSString* statusString = [MathUtil numberToString:statusNumber];
         if (![statusString isEqualToString:@"0"]) {
             [MBProgressHUDManager showMessage:@"报价失败" view:self.view];
         }else{
             _projectData.isCurrentQuote = YES;
             [MBProgressHUDManager showMessage:@"报价成功" view:self.view];
+            if ([_projectData.currentNumber intValue] == 1) {
+                _quote.text = @"修改";
+            }else{
+                _quote.backgroundColor = [UIColor grayColor];
+            }
         }
     }else if([getType isEqualToString:GET_MODIFICATION]){//修改
-        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
-        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSNumber* statusNumber = responseObject[@"status"];
         NSString* statusString = [MathUtil numberToString:statusNumber];
         if (![statusString isEqualToString:@"0"]) {
             [MBProgressHUDManager showMessage:@"修改失败" view:self.view];
@@ -592,9 +595,7 @@
             [MBProgressHUDManager showMessage:@"修改成功" view:self.view];
         }
     }else if ([getType isEqualToString:GET_ASK_REFUND]){//询价拒绝
-        
-        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
-        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSNumber* statusNumber = responseObject[@"status"];
         NSString* statusString = [MathUtil numberToString:statusNumber];
         if (![statusString isEqualToString:@"0"]){
             [MBProgressHUDManager showMessage:@"拒绝失败" view:self.view];
@@ -605,8 +606,7 @@
             [MBProgressHUDManager showMessage:@"拒绝成功" view:self.view];
         }
     }else if([getType isEqualToString:GET_ASK_MODIFY]){//询价修改
-        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
-        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSNumber* statusNumber = responseObject[@"status"];
         NSString* statusString = [MathUtil numberToString:statusNumber];
         if (![statusString isEqualToString:@"0"]){
             [MBProgressHUDManager showMessage:@"修改失败" view:self.view];
@@ -615,8 +615,7 @@
            [MBProgressHUDManager showMessage:@"修改成功" view:self.view];
         }
     }else if([getType isEqualToString:GET_ASK_QUOTE]){//询价报价
-        NSDictionary* dic = [JsonFactory creatJsonDataItem:operation.responseString];
-        NSNumber* statusNumber = [dic objectForKey:@"status"];
+        NSNumber* statusNumber = responseObject[@"status"];
         NSString* statusString = [MathUtil numberToString:statusNumber];
         if (![statusString isEqualToString:@"0"]){
             [MBProgressHUDManager showMessage:@"询价失败" view:self.view];
@@ -648,6 +647,7 @@
       
     }
 }
+
 
 /*修改当前报价*/
 -(void)changeDispose:(NSString*)changePrice{
